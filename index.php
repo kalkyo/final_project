@@ -22,7 +22,7 @@ $f3->route('GET /' , function ()
 {
    // display the home page
     $view = new Template();
-    echo $view->render('views/info.html');
+    echo $view->render('views/home.html');
 });
 
 // run fat-free
