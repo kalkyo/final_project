@@ -1,0 +1,16 @@
+{
+  "name": "peang/328/final_project",
+  "author": [
+    {
+      "name": "Peter Eang",
+      "email": "peang@greenriver.edu"
+    },
+    {
+      "name": "Jada Senebouttarath",
+      "email": "jsenebouttarath@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
