@@ -37,3 +37,10 @@ function validPhone($phone)
         return !empty($age);
     }
 }
+
+//returns the email if it is valid
+function validEmail($email)
+{
+    return !!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@
+([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email);;
+}

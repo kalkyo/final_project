@@ -38,6 +38,7 @@ $f3->route('GET|POST /profile1', function ($f3)
     $userAge = "";
     $userPhone = "";
     $userGender ="";
+    $userEmail = "";
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $userFName = $_POST['fname'];
@@ -45,6 +46,8 @@ $f3->route('GET|POST /profile1', function ($f3)
         $userAge = $_POST['age'];
         $userPhone = $_POST['phone'];
         $userGender = $_POST['gender'];
+        $userEmail = $_POST['email'];
+
 
         //if first name is valid store data
         if (validName($userFName)) {
@@ -83,11 +86,22 @@ $f3->route('GET|POST /profile1', function ($f3)
             $f3->set('errors["phone"]', 'Please enter a valid phone number');
         }
 
+        //if email is valid store data
+        if (validEmail($userEmail)) {
+            $_SESSION['email'] = $userEmail;
+        }
+        //set an error if not valid
+        else {
+            $f3->set('errors["email"]', 'Please enter a valid email');
+        }
+
         $_SESSION['fname'] = $_POST['fname'];
         $_SESSION['lname'] = $_POST['lname'];
         $_SESSION['age'] = $_POST['age'];
         $_SESSION['gender'] = $userGender;
         $_SESSION['phone'] = $_POST['phone'];
+        $_SESSION['email'] = $_POST['email'];
+
 
         if (empty($f3->get('errors'))) {
             header('location: profile2');
@@ -103,6 +117,7 @@ $f3->route('GET|POST /profile1', function ($f3)
     $f3->set('userAge', $userAge);
     $f3->set('userPhone', $userPhone);
     $f3->set('userGender', $userGender);
+    $f3->set('userEmail', $userEmail);
 
     //display the personal information page
     $view = new Template();
