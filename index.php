@@ -27,6 +27,7 @@ $f3->route('GET /' , function ()
     echo $view->render('views/home.html');
 });
 
+// define the create account profile1 route
 $f3->route('GET|POST /profile1', function ($f3)
 {
     //Reinitialize a session array
@@ -124,6 +125,14 @@ $f3->route('GET|POST /profile1', function ($f3)
     echo $view->render('views/personalinfo.html');
 }
 );
+
+// defind the shoe story page route
+$f3->route('GET /shop', function ()
+{
+    // display the store page
+    $view = new Template();
+    echo $view->render('views/shop.html');
+});
 
 // run fat-free
 $f3->run();
