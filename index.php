@@ -20,8 +20,10 @@ require_once ('model/validation.php');
 $f3 = Base :: instance();
 
 // define default route
-$f3->route('GET /' , function ()
+$f3->route('GET /' , function ($f3)
 {
+    // save variable to the F3 "hive" - title
+    $f3->set('title', 'Streetwear Storm');
    // display the home page
     $view = new Template();
     echo $view->render('views/home.html');
@@ -30,6 +32,9 @@ $f3->route('GET /' , function ()
 // define the create account profile1 route
 $f3->route('GET|POST /profile1', function ($f3)
 {
+    // save variable to the F3 "hive" - title
+    $f3->set('title', 'Streetwear Storm');
+
     //Reinitialize a session array
     $_SESSION = array();
 
@@ -127,8 +132,11 @@ $f3->route('GET|POST /profile1', function ($f3)
 );
 
 // defind the shoe story page route
-$f3->route('GET /shop', function ()
+$f3->route('GET /shop', function ($f3)
 {
+    // save variable to the F3 "hive" - title
+    $f3->set('title', 'Streetwear Storm');
+
     // display the store page
     $view = new Template();
     echo $view->render('views/outfits.html');
