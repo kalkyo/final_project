@@ -7,3 +7,9 @@
 .navbar{
     background-color: #0c5460;
 }
+
+/* error validation */
+.err {
+    color: darkred;
+    padding-left: 1em;
+}

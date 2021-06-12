@@ -3,50 +3,15 @@
     05/30/2021
     https://peang.greenriverdev.com/328/final_project/personalinfo.html/
 -->
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
-    <title>Personal Info</title>
-</head>
+<!-- header-->
+<include href="views/header.html"></include>
 <body class="mb-3">
 
 <!-- Navigation bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="./">Home</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="./">Men's</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./">Women's</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./">Kid's</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-</nav>
+<include href="views/navbar.html"></include>
 
 <!-- Main content -->
-<div class="container border border-1 rounded p-4 mt-4" > <!-- container -->
+<div class="container border border-1 rounded p-4 mt-4"> <!-- container -->
     <h1>Personal Information</h1>
     <hr>
     <form action="#" method="post" class="form-horizontal ">
@@ -58,7 +23,8 @@
 
                     <div data-tip="swag">
                         <input class="form-control" type="text" name="fname"
-                               id="fname" value="{{ @userFName }}">
+                               id="fname" value="{{ @userFName }}"
+                               placeholder="First Name">
                     </div>
                 </div>
                 <!-- error message for invalid first name -->
@@ -72,7 +38,8 @@
 
                     <div>
                         <input class="form-control" type="text" name="lname"
-                               id="lname" value="{{ @userLName }}">
+                               id="lname" value="{{ @userLName }}"
+                               placeholder="Last Name">
                     </div>
                 </div>
                 <!-- error message for invalid for last name -->
@@ -84,15 +51,16 @@
                 <div class="form-group">
                     <label for="email" class="fw-bold">Email</label>
                     <div class="col">
-                        <input class="form-control" type="text" name="email" id="email" value="{{ @userEmail }}">
+                        <input class="form-control" type="text" name="email" id="email" value="{{ @userEmail }}"
+                               placeholder="Your Email">
                     </div>
                 </div>
-                <!-- error message for invalid for phone -->
+                <!-- error message for invalid for email -->
                 <check if="{{ isset(@errors['email']) }}">
                     <span class="err">{{ @errors['email'] }}</span>
                 </check>
                 <br>
-                <!-- get age -->
+                <!-- get age
                 <div class="form-group">
                     <label for="age" class="fw-bold">Age</label>
                     <div>
@@ -101,13 +69,15 @@
                                placeholder="18-118">
                     </div>
                 </div>
-                <!-- error message for invalid for age -->
+                -->
+                <!-- error message for invalid for age
                 <check if="{{ isset(@errors['age']) }}">
                     <span class="err">{{ @errors['age'] }}</span>
                 </check>
+                -->
                 <br>
                 <br>
-                <!-- get gender -->
+                <!-- get gender
                 <div class="form-group">
                     <label class="col-sm-2 control-label fw-bold">Gender</label>
                     <div class="col-sm-4">
@@ -119,11 +89,11 @@
                                 > {{ ucfirst(@gender) }}
                             </label>
                         </repeat>
-
                     </div>
                 </div>
+                 -->
                 <br>
-                <!-- get phone number -->
+                <!-- get phone number
                 <div class="form-group">
                     <label for="phone" class="control-label fw-bold">Phone Number</label>
 
@@ -132,25 +102,28 @@
                                id="phone" value="{{ @userPhone }}" placeholder="111-222-3333">
                     </div>
                 </div>
-                <!-- error message for invalid for phone -->
+                -->
+                <!-- error message for invalid for phone
                 <check if="{{ isset(@errors['phone']) }}">
                     <span class="err">{{ @errors['phone'] }}</span>
                 </check>
             </div>
-            <div class="col-5">
-                <div class="mt-4 p-3 bg-light border rounded">
-                    <span class="fw-bold">Note:</span>
-                    All information entered is protected by our
-                    <span class="text-primary">privacy policy</span>.
-                    Profile information can
-                    only be viewed by others with your permission.</div>
+            -->
+                <div class="col-5">
+                    <div class="mt-4 p-3 bg-light border rounded">
+                        <span class="fw-bold">Note:</span>
+                        All information entered is protected by our
+                        <span class="text-primary">privacy policy</span>.
+                        Profile information can
+                        only be viewed by others with your permission.
+                    </div>
+                </div>
             </div>
-        </div>
 
-
-        <div class="text-end">
-            <input type="submit"  class="btn btn-info text-light" value="Next>">
-        </div>
+            <!-- next btn -->
+            <div class="text-end">
+                <input type="submit" class="btn btn-info text-light" value="Next>">
+            </div>
     </form>
 </div> <!-- container end-->
 
