@@ -1,0 +1,9 @@
+#outfitcatalog .card-img-top {
+    width: 100%;
+    height: 30vw;
+    object-fit: cover;
+}
+
+.navbar{
+    background-color: #0c5460;
+}
