@@ -14,39 +14,41 @@
 <div class="container border border-1 rounded p-4 mt-4"> <!-- container -->
     <h1>Personal Information</h1>
     <hr>
-    <form action="#" method="post" class="form-horizontal ">
+    <form action="#" method="post" class=" ">
         <div class="row">
-            <div class="col-7">
-                <!-- get first name -->
-                <div class="form-group">
-                    <label for="fname" class="fw-bold"> First Name</label>
-
-                    <div data-tip="swag">
-                        <input class="form-control" type="text" name="fname"
-                               id="fname" value="{{ @userFName }}"
-                               placeholder="First Name">
+            <div class="row">
+                <div class="">
+                    <!-- get first name -->
+                    <div class="form-group">
+                        <label for="fname" class="fw-bold"> First Name</label>
+                        <div>
+                            <input class="form-control" type="text" name="fname"
+                                   id="fname" value="{{ @userFName }}"
+                                   placeholder="First Name">
+                        </div>
                     </div>
-                </div>
-                <!-- error message for invalid first name -->
-                <check if="{{ isset(@errors['fname']) }}">
-                    <span class="err">{{ @errors['fname'] }}</span>
-                </check>
-                <br>
-                <!-- get last name -->
-                <div class="form-group">
-                    <label for="lname" class="fw-bold">Last Name</label>
+                    <!-- error message for invalid first name -->
+                    <check if="{{ isset(@errors['fname']) }}">
+                        <span class="err">{{ @errors['fname'] }}</span>
+                    </check>
+                    <br>
+                    <!-- get last name -->
+                    <div class="form-group">
+                        <label for="lname" class="fw-bold">Last Name</label>
 
-                    <div>
-                        <input class="form-control" type="text" name="lname"
-                               id="lname" value="{{ @userLName }}"
-                               placeholder="Last Name">
+                        <div>
+                            <input class="form-control" type="text" name="lname"
+                                   id="lname" value="{{ @userLName }}"
+                                   placeholder="Last Name">
+                        </div>
                     </div>
-                </div>
-                <!-- error message for invalid for last name -->
-                <check if="{{ isset(@errors['lname']) }}">
-                    <span class="err">{{ @errors['lname'] }}</span>
-                </check>
-                <br>
+                    <!-- error message for invalid for last name -->
+                    <check if="{{ isset(@errors['lname']) }}">
+                        <span class="err">{{ @errors['lname'] }}</span>
+                    </check>
+                    <br>
+            </div>
+
                 <!-- get email name -->
                 <div class="form-group">
                     <label for="email" class="fw-bold">Email</label>
@@ -124,6 +126,7 @@
             <div class="text-end">
                 <input type="submit" class="btn btn-info text-light" value="Next>">
             </div>
+        </div>
     </form>
 </div> <!-- container end-->
 

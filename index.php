@@ -131,7 +131,7 @@ $f3->route('GET /shop', function ()
 {
     // display the store page
     $view = new Template();
-    echo $view->render('views/shop.html');
+    echo $view->render('views/outfits.html');
 });
 
 // run fat-free
