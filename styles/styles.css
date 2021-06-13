@@ -12,4 +12,5 @@
 .err {
     color: darkred;
     padding-left: 1em;
+    display: none;
 }
