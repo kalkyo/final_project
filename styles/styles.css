@@ -4,9 +4,14 @@
     object-fit: cover;
 }
 
+#frontpageoutfit .card-img-top {
+    
+}
+
 /* navbar styles */
 .navbar{
-    background-color: #0c5460;
+    background-color: #eec356;
+
 }
 .navbar-nav.navbar-center {
     position: absolute;

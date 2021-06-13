@@ -13,6 +13,7 @@
 <!-- Main content -->
 <div class="container border border-1 rounded p-4 mt-4"> <!-- container -->
     <h1>Create an Account</h1>
+    <p>Here you can create an account to save outfits and sign up as a premium user to submit your own outfit</p>
     <hr>
     <form action="#" method="post" id="signup">
         <div class="row"> <!-- TOP row start-->
@@ -85,15 +86,23 @@
         <check if="{{ isset(@errors['email']) }}">
             <span class="err">{{ @errors['email'] }}</span>
         </check>
-        <br>
+        <!-- become premium user -->
+        <h6 class="mt-4">Premium User</h6>
+        <div class="form-check form-group">
+            <input type="checkbox" class="form-check-input"
+                   name="premium" id="premium" value="premium"
+            <check if="{{ @user == 'premium' }}">checked="checked"</check>>
+            <label class="form-check-label" for="premium">Sign me up for as a Premium User!</label>
+        </div>
 
         <!-- next btn -->
         <div class="text-end">
-            <input type="submit" class="btn btn-info text-light" value="Create">
+            <input type="submit" class="btn btn-warning text-light" value="Create">
         </div>
     </form>
 </div> <!-- container end-->
 
+<script src="scripts/showPassword.js"></script>
 <script src="scripts/signup.js"></script>
 <!-- footer-->
 <include href="views/footer.html"></include>
