@@ -108,7 +108,18 @@ $f3->route('GET|POST /profile1', function ($f3)
 }
 );
 
-// defind the shoe story page route
+// define login route
+$f3->route('GET /login' , function ($f3)
+{
+    // save variable to the F3 "hive" - title
+    $f3->set('title', 'Streetwear Storm');
+
+    // display the home page
+    $view = new Template();
+    echo $view->render('views/login.html');
+});
+
+// define the shoe story page route
 $f3->route('GET /shop', function ($f3)
 {
     // save variable to the F3 "hive" - title

@@ -1,0 +1,49 @@
+<!--
+    Peter Eang
+    05/04/2021
+    https://peang.greenriverdev.com/328/final_project/home.html/
+-->
+<!-- header-->
+<include href="views/header.html"></include>
+<body class="mb-3">
+<!-- Navigation bar -->
+<include href="views/navbar.html"></include>
+<div class="container border border-1 rounded p-4 mt-4">
+    <h1>Log in to see your inspired outfits!</h1>
+    <hr>
+    <form action="#" method="post" id="login">
+        <!-- Username -->
+        <div class="form-group col-md-3">
+            <label class="w-75" for="username"><strong>Username</strong></label>
+            <input type="text" class="form-control"
+                   id="username" name="username" value="{{ @userName}}"
+                   placeholder="Username">
+            <!-- PHP Validation -->
+            <!-- JavaScript Validation -->
+            <span class="err" id="err-username">Please Enter a Username</span>
+        </div> <!-- Username END -->
+
+        <!-- Password -->
+        <div class="form-group col-md-3">
+            <label class="w-75" for="password"><strong>Password</strong></label>
+            <input type="password" class="form-control"
+                   id="password" name="password" value=""
+                   placeholder="Password">
+            <!-- PHP Validation -->
+            <!-- JavaScript Validation -->
+            <span class="err" id="err-password">Please Enter a Password</span>
+            <!-- Show/Hide Password -->
+            <label class="d-block">
+                <input type="checkbox" id="passwordCheckbox" class="mx-1">Show Password</label>
+        </div> <!-- Password END -->
+
+        <!-- login button -->
+        <div class="text">
+            <input type="submit" class="btn btn-info text-light" value="Login">
+        </div>
+
+    </form> <!-- End of form -->
+
+</div> <!-- End of div class container -->
+
+</body>
