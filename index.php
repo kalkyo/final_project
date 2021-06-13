@@ -23,9 +23,9 @@ $f3->route('GET /', function (){
 });
 
 // define the create account profile1 route
-$f3->route('GET|POST /profile1', function ($f3)
+$f3->route('GET|POST /signup', function ($f3)
 {
-    $GLOBALS['con']->profile1();
+    $GLOBALS['con']->signup();
 });
 
 // define login route

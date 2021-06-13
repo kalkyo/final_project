@@ -18,7 +18,7 @@ class Controller
         echo $view->render('views/home.html');
     }
 
-    function profile1()
+    function signup()
     {
         //Reinitialize a session array
         $_SESSION = array();
