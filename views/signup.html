@@ -86,64 +86,6 @@
             <span class="err">{{ @errors['email'] }}</span>
         </check>
         <br>
-        <!-- get age
-        <div class="form-group">
-            <label for="age" class="fw-bold">Age</label>
-            <div>
-                <input class="form-control input-large" type="text"
-                       name="age" id="age" value="{{ @userAge }}"
-                       placeholder="18-118">
-            </div>
-        </div>
-        -->
-        <!-- error message for invalid for age
-        <check if="{{ isset(@errors['age']) }}">
-            <span class="err">{{ @errors['age'] }}</span>
-        </check>
-        -->
-        <br>
-        <br>
-        <!-- get gender
-        <div class="form-group">
-            <label class="col-sm-2 control-label fw-bold">Gender</label>
-            <div class="col-sm-4">
-                <repeat group="{{ @genders }}" value="{{ @gender }}">
-                    <label><input type="radio" name="gender"
-                                  id="{{ @gender }}" value="{{ @gender }}"
-                        <check if="{{ @gender == @userGender }}">
-                            checked="checked"</check>
-                        > {{ ucfirst(@gender) }}
-                    </label>
-                </repeat>
-            </div>
-        </div>
-         -->
-        <br>
-        <!-- get phone number
-        <div class="form-group">
-            <label for="phone" class="control-label fw-bold">Phone Number</label>
-
-            <div>
-                <input class="form-control" type="text" name="phone"
-                       id="phone" value="{{ @userPhone }}" placeholder="111-222-3333">
-            </div>
-        </div>
-        -->
-        <!-- error message for invalid for phone
-        <check if="{{ isset(@errors['phone']) }}">
-            <span class="err">{{ @errors['phone'] }}</span>
-        </check>
-    </div>
-    -->
-        <div class="col-5">
-            <div class="mt-4 p-3 bg-light border rounded">
-                <span class="fw-bold">Note:</span>
-                All information entered is protected by our
-                <span class="text-primary">privacy policy</span>.
-                Profile information can
-                only be viewed by others with your permission.
-            </div>
-        </div>
 
         <!-- next btn -->
         <div class="text-end">
