@@ -120,10 +120,10 @@ $f3->route('GET /login' , function ($f3)
 });
 
 // define the shoe story page route
-$f3->route('GET /shop', function ($f3)
+$f3->route('GET /outfits', function ($f3)
 {
     // save variable to the F3 "hive" - title
-    $f3->set('title', 'Streetwear Storm');
+    $f3->set('title', 'Outfits');
 
     // display the store page
     $view = new Template();
