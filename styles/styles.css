@@ -4,6 +4,7 @@
     object-fit: cover;
 }
 
+/* navbar styles */
 .navbar{
     background-color: #0c5460;
 }
@@ -14,3 +15,5 @@
     padding-left: 1em;
     display: none;
 }
+
+
