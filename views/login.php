@@ -1,8 +1,37 @@
-<!--
-    Peter Eang & Jada Senebouttarath
-    05/04/2021
-    https://peang.greenriverdev.com/328/final_project/home.html/
--->
+<?php
+// Initialize the session
+session_start();
+
+//Initialize variables
+$validLogin = true;
+$un = "";
+
+//If the form has been submitted
+if (!empty($_POST)) {
+//echo "The form has been submitted";
+
+//Get the form data
+$un = $_POST['username'];
+$pw = $_POST['password'];
+
+//If the login is valid
+require('admincred.php');
+if ($un == $username && $pw == $password) {
+
+    //Record the login in the session array
+    $_SESSION['un'] = $un;
+
+    //Go to the welcome
+    $page = isset($_SESSION['page']) ? $_SESSION['page'] : "welcome.php";
+    header('location: '.$page);
+}
+
+//Invalid login -- set flag variable
+$validLogin = false;
+
+?>
+<!DOCTYPE html>
+<html lang="en">
 <!-- header-->
 <include href="views/header.html"></include>
 <body class="mb-3">
@@ -16,7 +45,7 @@
         <div class="form-group col-md-3">
             <label class="w-75" for="username"><strong>Username</strong></label>
             <input type="text" class="form-control"
-                   id="username" name="username" value="{{ @userName}}"
+                   id="username" name="username" value="<?php echo $un; ?>"
                    placeholder="Username">
             <!-- PHP Validation -->
             <!-- JavaScript Validation -->
@@ -32,9 +61,6 @@
             <!-- PHP Validation -->
             <!-- JavaScript Validation -->
             <span class="err" id="err-password">Please Enter a Password</span>
-            <!-- Show/Hide Password -->
-            <label class="d-block">
-                <input type="checkbox" id="passwordCheckbox" class="mx-1">Show Password</label>
         </div> <!-- Password END -->
 
         <!-- login button -->
@@ -47,4 +73,5 @@
 </div> <!-- End of div class container -->
 <!-- footer-->
 <include href="views/footer.html"></include>
+
 </body>

@@ -116,7 +116,7 @@ $f3->route('GET /login' , function ($f3)
 
     // display the home page
     $view = new Template();
-    echo $view->render('views/login.html');
+    echo $view->render('views/login.php');
 });
 
 // define the shoe story page route
