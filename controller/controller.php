@@ -33,6 +33,17 @@ class Controller
             $user = new User();
         }
 
+        //Connect to database
+        try {
+            //Instantiate a PDO database object
+            $dbh = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+            echo "Connect to database";
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage(); //for debugging
+            echo "OOF";
+        }
+
         //Initialize variables to store user input
         $userFName = "";
         $userLName ="";
@@ -97,6 +108,10 @@ class Controller
             if (empty($this->_f3->get('errors'))) {
                 header('location: welcome');
             }
+
+            //1. Define the query
+            //$sql = "INSERT INTO users VALUES (null, :fname)"
+
         }
 
         //store the user input to the hive
@@ -123,6 +138,17 @@ class Controller
         INSERT INTO users (username, password, authlevel) VALUES
              ('jshmo', sha1('shmo123'), 1),
      */
+
+        //Connect to database
+        try {
+            //Instantiate a PDO database object
+            $dbh = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
+                echo "Connect to database";
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage(); //for debugging
+            echo "OOF";
+        }
 
         // save variable to the F3 "hive" - title
         $this->_f3->set('title', 'Streetwear Storm');

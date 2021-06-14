@@ -8,6 +8,7 @@ error_reporting(E_ALL);
 
 // require autoload file
 require_once ('vendor/autoload.php');
+require $_SERVER['DOCUMENT_ROOT'].'/../config.php';
 
 // start a session
 session_start();
