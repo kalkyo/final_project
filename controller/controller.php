@@ -76,6 +76,17 @@ class Controller
 
             }
 
+            //if password is valid store data
+            if (isValidPassword($userPassword)) {
+                $_SESSION['password'] = $userPassword;
+            }
+            //set an error if not valid
+            else {
+                $this->_f3->set('errors["password"]',
+                    'Password must contain an uppercase, a number, and at least one special character');
+
+            }
+
             $_SESSION['fname'] = $_POST['fname'];
             $_SESSION['lname'] = $_POST['lname'];
             $_SESSION['username'] = $_POST['username'];
@@ -95,7 +106,7 @@ class Controller
         $this->_f3->set('userPassword', $userPassword);
         $this->_f3->set('userEmail', $userEmail);
 
-        //display the personal information page
+        //display the signup page
         $view = new Template();
         echo $view->render('views/signup.html');
     }
@@ -116,14 +127,40 @@ class Controller
         // save variable to the F3 "hive" - title
         $this->_f3->set('title', 'Streetwear Storm');
 
+        // check if the user is already logged in, if yes redirect to welcome page
+        if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+            header("location: welcome");
+            exit;
+        }
+
+        //Connect to DB
+        require $_SERVER['DOCUMENT_ROOT']."/../config.php";
+
+        // Define variables and initialize with empty values
+        $username = $password = "";
+        $username_err = $password_err = $login_err = "";
+
         //Initialize error flag
         $errFlag = false;
 
         //See if the login form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            //Connect to DB
-            require $_SERVER['DOCUMENT_ROOT']."/../config.php";
+            // Check if username is empty
+            if(empty(trim($_POST["username"]))){
+                $username_err = "Please enter username.";
+            } else{
+                $username = trim($_POST["username"]);
+            }
+
+            // Check if password is empty
+            if(empty(trim($_POST["password"]))){
+                $password_err = "Please enter your password.";
+            } else{
+                $password = trim($_POST["password"]);
+            }
+
+
 
             //Query the DB
             $sql = "SELECT * FROM users WHERE username = :un AND password = :pw";
@@ -150,7 +187,7 @@ class Controller
                 if (isset($_SESSION['page'])) {
                     $loc = $_SESSION['page'];
                 } else {
-                    $loc = "login";
+                    $loc = "outfits";
                 }
                 header("location: $loc");
 
