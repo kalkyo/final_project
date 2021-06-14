@@ -160,8 +160,6 @@ class Controller
                 $password = trim($_POST["password"]);
             }
 
-
-
             //Query the DB
             $sql = "SELECT * FROM users WHERE username = :un AND password = :pw";
             $sql2 = "INSERT INTO users (username, password, authlevel) 
