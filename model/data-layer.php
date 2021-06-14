@@ -15,7 +15,7 @@ class DataLayer
     /**
      * DataLayer constructor.
      */
-    public function __construct()
+    function __construct()
     {
         // connect to the database
         try{
@@ -29,5 +29,33 @@ class DataLayer
         }
     }
 
+    /**
+     * saveUser accepts an user object and inserts it into the database
+     * @param $user
+     * @return string
+     */
+    function saveUser($user)
+    {
+        //1. Define the query
+        $sql = "INSERT INTO users(fname, lname, username, password, email)
+                VALUES (:fname, :lname, :username, :password, :email)";
 
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters
+        $statement->bindParam(':fname', $user->getFname(), PDO::PARAM_STR);
+        $statement->bindParam(':lname', $user->getLname(), PDO::PARAM_STR);
+        $statement->bindParam(':username', $user->getUsername(), PDO::PARAM_STR);
+        $statement->bindParam(':password', $user->getPassword(), PDO::PARAM_STR);
+        $statement->bindParam(':email', $user->getEmail(), PDO::PARAM_STR);
+
+        //4. Execute the query
+        $statement->execute();
+
+        //5. Process the results (get userID)
+        $id = $this->_dbh->lastInsertId();
+        return $id;
+
+    }
 }

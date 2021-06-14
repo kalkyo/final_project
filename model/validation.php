@@ -44,7 +44,7 @@ class Validation
     static function validEmail($email)
     {
         return !!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@
-                                      ([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email);;
+                                      ([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email);
     }
 
     /*
@@ -53,10 +53,10 @@ class Validation
         at least one digit
         at least one special sign of @#-_$%^&+=§!?
      */
-    static function isValidPassword($password): bool
+    static function isValidPassword($password)
     {
-        $pattern = '/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,20}$/';
-        return preg_match($pattern, $password) == 1;
+        return !!preg_match("/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])
+                    (?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,20}$/", $password);
     }
 }
 

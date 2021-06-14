@@ -33,35 +33,34 @@ class Controller
             $user = new User();
         }
 
-        //Connect to database
-        try {
-            //Instantiate a PDO database object
-            $dbh = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-            echo "Connect to database";
-        }
-        catch (PDOException $e) {
-            echo $e->getMessage(); //for debugging
-            echo "OOF";
-        }
+        $_SESSION['user'] = new User();
 
         //Initialize variables to store user input
         $userFName = "";
-        $userLName ="";
+        $userLName = "";
         $userEmail = "";
         $userName = "";
         $userPassword = "";
 
+        // For if the form is submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
             $userFName = $_POST['fname'];
             $userLName = $_POST['lname'];
             $userEmail = $_POST['email'];
             $userName = $_POST['username'];
             $userPassword = $_POST['password'];
 
+            $user->setFname($_POST['fname']);
+            $user->setLname($_POST['lname']);
+            $user->setUsername($_POST['username']);
+            $user->setPassword($_POST['password']);
+            $user->setEmail($_POST['email']);
+
 
             //if first name is valid store data
             if (Validation::validName($userFName)) {
-                $_SESSION['fname'] = $userFName;
+                $user->setFname($userFName);
             }
             //set an error if not valid
             else {
@@ -70,16 +69,16 @@ class Controller
 
             //if last name is valid store data
             if (Validation::validName($userLName)) {
-                $_SESSION['lname'] = $userLName;
+                $user->setLname($userLName);
             }
             //set an error if not valid
             else {
                 $this->_f3->set('errors["lname"]', 'Please enter a valid last name');
             }
 
-            /*//if email is valid store data
+            //if email is valid store data
             if (Validation::validEmail($userEmail)) {
-                $_SESSION['email'] = $userEmail;
+                $user->setEmail($userEmail);
             }
             //set an error if not valid
             else {
@@ -87,7 +86,13 @@ class Controller
 
             }
 
+            //if username is valid store data
+            $user->setUsername($userName);
+
             //if password is valid store data
+            $user->setPassword($userPassword);
+
+            /*//if password is valid store data
             if (Validation::isValidPassword($userPassword)) {
                 $_SESSION['password'] = $userPassword;
             }
@@ -98,40 +103,20 @@ class Controller
 
             }*/
 
-            $_SESSION['fname'] = $_POST['fname'];
-            $_SESSION['lname'] = $_POST['lname'];
-            $_SESSION['username'] = $_POST['username'];
-            $_SESSION['password'] = $_POST['password'];
-            $_SESSION['email'] = $_POST['email'];
-
+            $_SESSION['user'] = $user;
 
             if (empty($this->_f3->get('errors'))) {
                 header('location: summary');
             }
-
-            /*//1. Define the query
-            $sql = "INSERT INTO users VALUES (null, :fname, :lname, :username, :password, :email)";
-
-            //2. Prepare the statement (precompiles the query
-            $statement = $dbh->prepare($sql);
-
-            //3. Bind the parameters
-            $statement->bindParam(':fname', $_SESSION['fname'], PDO::PARAM_STR);
-            $statement->bindParam(':lname', $_SESSION['lname'], PDO::PARAM_STR);
-            $statement->bindParam(':username', $_SESSION['username'], PDO::PARAM_STR);
-            $statement->bindParam(':password', $_SESSION['password'], PDO::PARAM_STR);
-            $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
-
-            //4. Execute the statement
-            $statement->execute();*/
         }
 
         //store the user input to the hive
-        $this->_f3->set('userFName', $userFName);
-        $this->_f3->set('userLName', $userLName);
-        $this->_f3->set('userName', $userName);
-        $this->_f3->set('userPassword', $userPassword);
-        $this->_f3->set('userEmail', $userEmail);
+        $this->_f3->set('user', $_POST['premium']);
+        $this->_f3->set('userFName', $user->getFname());
+        $this->_f3->set('userLName', $user->getLname());
+        $this->_f3->set('userName', $user->getUsername());
+        $this->_f3->set('userPassword', $user->getPassword());
+        $this->_f3->set('userEmail', $user->getEmail());
 
         //display the signup page
         $view = new Template();
@@ -140,6 +125,9 @@ class Controller
 
     function summary()
     {
+        $userID = $GLOBALS['dataLayer']->saveUser($_SESSION['user']);
+        $this->_f3->set('userID', $userID);
+
         //Display the second order form
         $view = new Template();
         echo $view->render('views/summary.html');

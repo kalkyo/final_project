@@ -17,27 +17,27 @@ class User
 
     /**
      * Member constructor.
-     * @param string $_fname User's first name, default ""
-     * @param string $_lname User's last name, default ""
-     * @param string $_email User's email, default ""
-     * @param string $_username User's username, default ""
-     * @param string $_password User's password, default ""
+     * @param string $fname User's first name, default ""
+     * @param string $lname User's last name, default ""
+     * @param string $email User's email, default ""
+     * @param string $username User's username, default ""
+     * @param string $password User's password, default ""
      * @return void
      */
-    function __construct($_fname="", $_lname="", $_email = "", $_username = "", $_password = "")
+    function __construct($fname="", $lname="", $email = "", $username = "", $password = "")
     {
-        $this->_fname = $_fname;
-        $this->_lname = $_lname;
-        $this->_email = $_email;
-        $this->_username = $_username;
-        $this->_password = $_password;
+        $this->_fname = $fname;
+        $this->_lname = $lname;
+        $this->_email = $email;
+        $this->_username = $username;
+        $this->_password = $password;
     }
 
     /**
      * getFname() function
      * @return string User's first name
      */
-    public function getFname()
+    public function getFname(): string
     {
         return $this->_fname;
     }
@@ -47,7 +47,7 @@ class User
      * @param string $fname User's first name
      * @return void
      */
-    public function setFname($fname)
+    public function setFname($fname): void
     {
         $this->_fname = $fname;
     }
@@ -56,7 +56,7 @@ class User
      * getLname() function
      * @return string User's last name
      */
-    public function getLname()
+    public function getLname(): string
     {
         return $this->_lname;
     }
@@ -66,7 +66,7 @@ class User
      * @param string $lname User's last name
      * @return void
      */
-    public function setLname($lname)
+    public function setLname($lname): void
     {
         $this->_lname = $lname;
     }
@@ -75,7 +75,7 @@ class User
      * getEmail() function
      * @return string User's Email
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->_email;
     }
@@ -85,7 +85,7 @@ class User
      * @param string $email User's email
      * @return void
      */
-    public function setEmail($email)
+    public function setEmail($email): void
     {
         $this->_email = $email;
     }
@@ -94,7 +94,7 @@ class User
      * getUsername() function
      * @return string User's username
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->_username;
     }
@@ -104,7 +104,7 @@ class User
      * @param string $userName User's username
      * @return void
      */
-    public function setUsername($userName)
+    public function setUsername($userName): void
     {
         $this->_username = $userName;
     }
@@ -113,7 +113,7 @@ class User
      * getPassword() function
      * @return string User's password
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->_password;
     }
@@ -122,7 +122,7 @@ class User
      * setPassword() function
      * @param string $password User's password
      */
-    public function setPassword($password)
+    public function setPassword($password): void
     {
         $this->_password = $password;
     }
