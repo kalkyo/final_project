@@ -1,6 +1,6 @@
 <?php
 
-// this is my controller for the diner project
+// this is my controller for the final project
 
 // turn on error-reporting
 ini_set('display_errors', 1);
@@ -22,7 +22,7 @@ $f3->route('GET /', function (){
     $GLOBALS['con']->home();
 });
 
-// define the create account profile1 route
+// define the create account signup route
 $f3->route('GET|POST /signup', function ($f3)
 {
     $GLOBALS['con']->signup();
@@ -32,6 +32,13 @@ $f3->route('GET|POST /signup', function ($f3)
 $f3->route('GET|POST /login' , function ($f3)
 {
     $GLOBALS['con']->login();
+});
+
+
+// define welcome route
+$f3->route('GET|POST /welcome' , function ($f3)
+{
+    $GLOBALS['con']->welcome();
 });
 
 // define the shoe story page route

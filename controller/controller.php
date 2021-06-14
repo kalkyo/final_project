@@ -54,7 +54,7 @@ class Controller
             }
             //set an error if not valid
             else {
-                $this->_f3->set('errors["fname"]', 'Please enter a valid name');
+                $this->_f3->set('errors["fname"]', 'Please enter a valid first name');
             }
 
             //if last name is valid store data
@@ -63,7 +63,7 @@ class Controller
             }
             //set an error if not valid
             else {
-                $this->_f3->set('errors["lname"]', 'Please enter a valid name');
+                $this->_f3->set('errors["lname"]', 'Please enter a valid last name');
             }
 
             //if email is valid store data
@@ -73,6 +73,7 @@ class Controller
             //set an error if not valid
             else {
                 $this->_f3->set('errors["email"]', 'Please enter a valid email');
+
             }
 
             $_SESSION['fname'] = $_POST['fname'];
@@ -83,7 +84,7 @@ class Controller
 
 
             if (empty($this->_f3->get('errors'))) {
-                header('location: profile2');
+                header('location: welcome');
             }
         }
 
@@ -101,12 +102,101 @@ class Controller
 
     function login()
     {
+        /*
+        CREATE TABLE users (
+            userid int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+            username varchar(20) NOT NULL,
+            password varchar(40) NOT NULL,
+            authlevel int(1) DEFAULT NULL
+        );
+        INSERT INTO users (username, password, authlevel) VALUES
+             ('jshmo', sha1('shmo123'), 1),
+     */
+
         // save variable to the F3 "hive" - title
         $this->_f3->set('title', 'Streetwear Storm');
 
-        // display the home page
+        //Initialize error flag
+        $errFlag = false;
+
+        //See if the login form has been submitted
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            //Connect to DB
+            require $_SERVER['DOCUMENT_ROOT']."/../config.php";
+
+            //Query the DB
+            $sql = "SELECT * FROM users WHERE username = :un AND password = :pw";
+            $sql2 = "INSERT INTO users (username, password, authlevel) 
+                VALUES (:username, :password, :authlevel)";
+            $statement = $dbh->prepare($sql);
+
+            $un = $_POST['username'];
+            $pw = sha1($_POST['password']);
+            $statement->bindParam(':un', $un, PDO::PARAM_STR);
+            $statement->bindParam(':pw', $pw, PDO::PARAM_STR);
+            $statement->execute();
+            $count = $statement->rowCount();
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $authLevel = $row['authlevel'];
+
+            //Successful login
+            if ($count == 1) {
+
+                // record login in the session array
+                $_SESSION['un'] = $un;
+
+                //Send the user back where they came from
+                if (isset($_SESSION['page'])) {
+                    $loc = $_SESSION['page'];
+                } else {
+                    $loc = "login";
+                }
+                header("location: $loc");
+
+            } else {
+                //Set error flag
+                $errFlag = true;
+            }
+        }
+
+        // display the login page
         $view = new Template();
         echo $view->render('views/login.html');
+    }
+
+    function logout()
+    {
+        session_regenerate_id();
+        session_destroy();
+        $_SESSION = array();
+        header('location: login');
+
+        // display the home page
+        $view = new Template();
+        echo $view->render('views/home.html');
+    }
+
+    function welcome()
+    {
+        // save variable to the F3 "hive" - title
+        $this->_f3->set('title', 'Welcome');
+
+        //Connect to DB
+        require $_SERVER['DOCUMENT_ROOT']."/../config.php";
+
+        // if the user is not logged in
+        if (!isset($_SESSION['un'])) {
+            // store the current page in the session
+            $_SESSION['page'] = 'welcome';
+
+            // redirect user to login page
+            header('location: login');
+        }
+
+        // display the welcome page
+        $view = new Template();
+        echo $view->render('views/welcome.html');
     }
 
     function outfits()
@@ -114,7 +204,7 @@ class Controller
         // save variable to the F3 "hive" - title
         $this->_f3->set('title', 'Outfits');
 
-        // display the store page
+            // display the store page
         $view = new Template();
         echo $view->render('views/outfits.html');
     }
