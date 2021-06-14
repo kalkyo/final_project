@@ -187,7 +187,7 @@ class Controller
                 if (isset($_SESSION['page'])) {
                     $loc = $_SESSION['page'];
                 } else {
-                    $loc = "outfits";
+                    $loc = "welcome";
                 }
                 header("location: $loc");
 
