@@ -60,7 +60,7 @@ class Controller
 
 
             //if first name is valid store data
-            if (validName($userFName)) {
+            if (Validation::validName($userFName)) {
                 $_SESSION['fname'] = $userFName;
             }
             //set an error if not valid
@@ -69,7 +69,7 @@ class Controller
             }
 
             //if last name is valid store data
-            if (validName($userLName)) {
+            if (Validation::validName($userLName)) {
                 $_SESSION['lname'] = $userLName;
             }
             //set an error if not valid
@@ -77,8 +77,8 @@ class Controller
                 $this->_f3->set('errors["lname"]', 'Please enter a valid last name');
             }
 
-            //if email is valid store data
-            if (validEmail($userEmail)) {
+            /*//if email is valid store data
+            if (Validation::validEmail($userEmail)) {
                 $_SESSION['email'] = $userEmail;
             }
             //set an error if not valid
@@ -88,7 +88,7 @@ class Controller
             }
 
             //if password is valid store data
-            if (isValidPassword($userPassword)) {
+            if (Validation::isValidPassword($userPassword)) {
                 $_SESSION['password'] = $userPassword;
             }
             //set an error if not valid
@@ -96,7 +96,7 @@ class Controller
                 $this->_f3->set('errors["password"]',
                     'Password must contain an uppercase, a number, and at least one special character');
 
-            }
+            }*/
 
             $_SESSION['fname'] = $_POST['fname'];
             $_SESSION['lname'] = $_POST['lname'];
@@ -106,12 +106,24 @@ class Controller
 
 
             if (empty($this->_f3->get('errors'))) {
-                header('location: welcome');
+                header('location: summary');
             }
 
-            //1. Define the query
-            //$sql = "INSERT INTO users VALUES (null, :fname)"
+            /*//1. Define the query
+            $sql = "INSERT INTO users VALUES (null, :fname, :lname, :username, :password, :email)";
 
+            //2. Prepare the statement (precompiles the query
+            $statement = $dbh->prepare($sql);
+
+            //3. Bind the parameters
+            $statement->bindParam(':fname', $_SESSION['fname'], PDO::PARAM_STR);
+            $statement->bindParam(':lname', $_SESSION['lname'], PDO::PARAM_STR);
+            $statement->bindParam(':username', $_SESSION['username'], PDO::PARAM_STR);
+            $statement->bindParam(':password', $_SESSION['password'], PDO::PARAM_STR);
+            $statement->bindParam(':email', $_SESSION['email'], PDO::PARAM_STR);
+
+            //4. Execute the statement
+            $statement->execute();*/
         }
 
         //store the user input to the hive
@@ -124,6 +136,16 @@ class Controller
         //display the signup page
         $view = new Template();
         echo $view->render('views/signup.html');
+    }
+
+    function summary()
+    {
+        //Display the second order form
+        $view = new Template();
+        echo $view->render('views/summary.html');
+
+        //This might be problematic
+        unset($_SESSION['order']);
     }
 
     function login()

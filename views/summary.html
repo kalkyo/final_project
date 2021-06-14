@@ -1,0 +1,43 @@
+<!--
+    Peter & Jada
+    https://peang.greenriverdev.com/328/final_project/summary
+    This is the summary page showing the user their inputted information for them or their dog.
+    following a silhouette photo of a dog and
+-->
+
+<!-- header-->
+<include href="views/header.html"/>
+
+<body class="mb-3">
+<!-- Navigation bar -->
+<include href="views/navbar.html"></include>
+
+<!-- Main content -->
+<div class="container border border-2 rounded">
+    <div class="row">
+        <div class="mt-3">
+            <div class="">
+                <table class="m-2 table table-bordered">
+                    <tbody>
+                    <tr>
+                      <td>Name: {{ @SESSION.user->getFname() }} {{ @SESSION.user->getLname() }}</td>
+                    </tr>
+                    <tr>
+                      <td>Gender: {{ @SESSION.user->getUserName() }}</td>
+                    </tr>
+                    <check if="{{ @SESSION.user instanceof premiumUser }}">
+                        <tr>
+                            <td>
+                                You are swag
+                            </td>
+                        </tr>
+                    </check>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -29,6 +29,12 @@ $f3->route('GET|POST /signup', function ($f3)
     $GLOBALS['con']->signup();
 });
 
+// define summary route
+$f3->route('GET /summary' , function ($f3)
+{
+    $GLOBALS['con']->summary();
+});
+
 // define login route
 $f3->route('GET|POST /login' , function ($f3)
 {
