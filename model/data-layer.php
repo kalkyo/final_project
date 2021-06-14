@@ -44,6 +44,7 @@ class DataLayer
         $statement = $this->_dbh->prepare($sql);
 
         //3. Bind the parameters
+        $user = $_SESSION['user'];
         $statement->bindParam(':fname', $user->getFname(), PDO::PARAM_STR);
         $statement->bindParam(':lname', $user->getLname(), PDO::PARAM_STR);
         $statement->bindParam(':username', $user->getUsername(), PDO::PARAM_STR);

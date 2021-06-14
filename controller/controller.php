@@ -34,6 +34,7 @@ class Controller
         }
 
         $_SESSION['user'] = new User();
+        var_dump($_SESSION['user']);
 
         //Initialize variables to store user input
         $userFName = "";
@@ -44,23 +45,16 @@ class Controller
 
         // For if the form is submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             $userFName = $_POST['fname'];
             $userLName = $_POST['lname'];
             $userEmail = $_POST['email'];
             $userName = $_POST['username'];
             $userPassword = $_POST['password'];
 
-            $user->setFname($_POST['fname']);
-            $user->setLname($_POST['lname']);
-            $user->setUsername($_POST['username']);
-            $user->setPassword($_POST['password']);
-            $user->setEmail($_POST['email']);
-
 
             //if first name is valid store data
             if (Validation::validName($userFName)) {
-                $user->setFname($userFName);
+                $_SESSION['user']->setFname($userFName);
             }
             //set an error if not valid
             else {
@@ -69,7 +63,7 @@ class Controller
 
             //if last name is valid store data
             if (Validation::validName($userLName)) {
-                $user->setLname($userLName);
+                $_SESSION['user']->setLname($userLName);
             }
             //set an error if not valid
             else {
@@ -78,7 +72,7 @@ class Controller
 
             //if email is valid store data
             if (Validation::validEmail($userEmail)) {
-                $user->setEmail($userEmail);
+                $_SESSION['user']->setEmail($userEmail);
             }
             //set an error if not valid
             else {
@@ -87,10 +81,10 @@ class Controller
             }
 
             //if username is valid store data
-            $user->setUsername($userName);
+            $_SESSION['user']->setUsername($userName);
 
             //if password is valid store data
-            $user->setPassword($userPassword);
+            $_SESSION['user']->setPassword($userPassword);
 
             /*//if password is valid store data
             if (Validation::isValidPassword($userPassword)) {
@@ -103,8 +97,6 @@ class Controller
 
             }*/
 
-            $_SESSION['user'] = $user;
-
             if (empty($this->_f3->get('errors'))) {
                 header('location: summary');
             }
@@ -112,11 +104,11 @@ class Controller
 
         //store the user input to the hive
         $this->_f3->set('user', $_POST['premium']);
-        $this->_f3->set('userFName', $user->getFname());
-        $this->_f3->set('userLName', $user->getLname());
-        $this->_f3->set('userName', $user->getUsername());
-        $this->_f3->set('userPassword', $user->getPassword());
-        $this->_f3->set('userEmail', $user->getEmail());
+        $this->_f3->set('userFName', $_SESSION['user']->getFname());
+        $this->_f3->set('userLName', $_SESSION['user']->getLname());
+        $this->_f3->set('userName', $_SESSION['user']->getUsername());
+        $this->_f3->set('userPassword', $_SESSION['user']->getPassword());
+        $this->_f3->set('userEmail', $_SESSION['user']->getEmail());
 
         //display the signup page
         $view = new Template();
@@ -125,8 +117,8 @@ class Controller
 
     function summary()
     {
-        $userID = $GLOBALS['dataLayer']->saveUser($_SESSION['user']);
-        $this->_f3->set('userID', $userID);
+        $userId = $GLOBALS['dataLayer']->saveUser($_SESSION['user']);
+        $this->_f3->set('userId', $userId);
 
         //Display the second order form
         $view = new Template();

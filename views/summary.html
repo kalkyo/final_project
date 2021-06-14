@@ -15,8 +15,12 @@
     <div class="row">
         <div class="mt-5">
             <div class="">
+                <h1>Account Created!</h1>
                 <table class="m-2 table table-bordered">
                     <tbody>
+                    <tr>
+                        <td>User ID: {{ @userId }}</td>
+                    </tr>
                     <tr>
                       <td>Name: {{ @SESSION.user->getFname() }} {{ @SESSION.user->getLname() }}</td>
                     </tr>

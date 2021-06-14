@@ -16,7 +16,11 @@ session_start();
 // instantiate fat-free
 $f3 = Base :: instance();
 $con = new Controller($f3);
-$datalayer = new DataLayer();
+$dataLayer = new DataLayer();
+
+//test method
+/*$datalayer->saveUser(new User("Pengu", "Mang", "pengu@gmail.com",
+    "penguM", "testWord12!"));*/
 
 // define default route
 $f3->route('GET /', function (){
