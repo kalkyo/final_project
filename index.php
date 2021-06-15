@@ -29,9 +29,15 @@ $f3->route('GET|POST /', function (){
 });
 
 // define the create account signup route
-$f3->route('GET|POST /signup', function ($f3)
+$f3->route('GET|POST /checkout', function ($f3)
 {
-    $GLOBALS['con']->signup();
+    $GLOBALS['con']->checkout();
+});
+
+// define the create account signup route
+$f3->route('GET|POST /cart', function ($f3)
+{
+    $GLOBALS['con']->cart();
 });
 
 // define summary route
@@ -60,9 +66,9 @@ $f3->route('GET|POST /welcome' , function ($f3)
 });
 
 // define the shoe story page route
-$f3->route('GET /outfits', function ($f3)
+$f3->route('GET /shoes', function ($f3)
 {
-    $GLOBALS['con']->outfits();
+    $GLOBALS['con']->shoes();
 });
 
 // run fat-free

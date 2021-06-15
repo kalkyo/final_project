@@ -1,36 +1,36 @@
 <?php
 
 /**
- * Order class
- * Represents an order object with name, email ,username and address
+ * User class
+ * Represents a user object with name, email ,username and password
  * @author Peter Eang & Jada Senebouttarath
  * @copyright 2021
  */
 
-class Order
+class User
 {
     private $_fname;
     private $_lname;
     private $_email;
-    private $_address;
-    private $_shoes;
+    private $_username;
+    private $_password;
 
     /**
      * Member constructor.
      * @param string $fname User's first name, default ""
      * @param string $lname User's last name, default ""
      * @param string $email User's email, default ""
-     * @param string $address User's address, default ""
-     *
+     * @param string $username User's username, default ""
+     * @param string $password User's password, default ""
+     * @return void
      */
-    function __construct($fname="", $lname="", $email="", $address="", $_shoes="")
+    function __construct($fname="", $lname="", $email = "", $username = "", $password = "")
     {
         $this->_fname = $fname;
         $this->_lname = $lname;
         $this->_email = $email;
-        $this->_address = $address;
-        $this->_shoes = $_shoes;
-
+        $this->_username = $username;
+        $this->_password = $password;
     }
 
     /**
@@ -91,40 +91,39 @@ class Order
     }
 
     /**
-     * getAddress() function
-     * @return string User's address
+     * getUsername() function
+     * @return string User's username
      */
-    public function getAddress(): string
+    public function getUsername(): string
     {
-        return $this->_address;
+        return $this->_username;
     }
 
     /**
-     * setAddress() function
-     * @param string $address User's address
+     * setUsername() function
+     * @param string $userName User's username
      * @return void
      */
-    public function setAddress($address): void
+    public function setUsername($userName): void
     {
-        $this->_address = $address;
+        $this->_username = $userName;
     }
 
     /**
-     * @return mixed|string
+     * getPassword() function
+     * @return string User's password
      */
-    public function getShoes()
+    public function getPassword(): string
     {
-        return $this->_shoes;
+        return $this->_password;
     }
 
     /**
-     * @param mixed|string $shoes
+     * setPassword() function
+     * @param string $password User's password
      */
-    public function setShoes($shoes)
+    public function setPassword($password): void
     {
-        $this->_shoes = $shoes;
+        $this->_password = $password;
     }
-
-
-
 }

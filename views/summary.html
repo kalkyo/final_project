@@ -22,19 +22,14 @@
                         <td>User ID: {{ @userId }}</td>
                     </tr>
                     <tr>
-                      <td>Name: {{ @SESSION.user->getFname() }} {{ @SESSION.user->getLname() }}</td>
+                        <td>Name: {{ @SESSION.order->getFname() }} {{ @SESSION.order->getLname() }}</td>
                     </tr>
                     <tr>
-                      <td>Username: {{ @SESSION.user->getUserName() }}</td>
+                        <td>Address: {{ @SESSION.order->getAddress() }}</td>
                     </tr>
-
-                    <check if="{{ @SESSION.user instanceof premiumUser }}">
-                        <tr>
-                            <td> Premium User:
-                                You are swag
-                            </td>
-                        </tr>
-                    </check>
+                    <tr>
+                        <td>Shoes: {{ @SESSION.order->getShoes() }}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

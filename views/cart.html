@@ -1,0 +1,50 @@
+<!--
+    Peter & Jada
+    05/30/2021
+    https://peang.greenriverdev.com/328/final_project/personalinfo.html/
+-->
+<!-- header-->
+<include href="views/header.html"></include>
+<body class="d-flex flex-column min-vh-100">
+
+<!-- Navigation bar -->
+<include href="views/navbar.html"></include>
+
+<!-- Main content -->
+<div class="container border border-1 rounded p-4 mt-4"> <!-- container -->
+    <h1>Create an Account</h1>
+    <p>Here you can create an account to save outfits and sign up as a premium user to submit your own outfit</p>
+    <hr>
+    <form action="#" method="post" class="form-horizontal">
+        <div class="row"> <!-- End row start -->
+            <!-- get shoes -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Select Shoes to purchase</label>
+                <div class="col-sm-4">
+                    <repeat group="{{ @shoes }}" value="{{ @shoe }}">
+                        <label><input type="checkbox"
+                                      name="shoes[]"
+                                      value="{{ @shoe }}"
+                            <check if="{{ in_array(@shoe, @userShoes) }}">
+                                checked="checked"
+                            </check>
+                            > {{ @shoe }}</label><br>
+                    </repeat>
+                </div>
+                <check if="{{ isset(@errors['conds']) }}">
+                    <span class="err">{{ @errors['conds'] }}</span>
+                </check>
+            </div>
+        </div>
+
+        <!-- next btn -->
+        <div class="text-center mt-3">
+            <input type="submit" class="btn btn-warning text-light" value="Next">
+        </div>
+    </form>
+</div> <!-- container end-->
+
+<script src="scripts/signup.js"></script>
+<!-- footer-->
+<include href="views/footer.html"></include>
+</body>

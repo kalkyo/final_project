@@ -19,16 +19,11 @@ class Controller
     }
 
     // checkout
-    function signup()
+    function checkout()
     {
-        //Reinitialize a session array
-        $_SESSION = array();
 
         // save variable to the F3 "hive" - title
         $this->_f3->set('title', 'Streetwear Storm');
-
-        $_SESSION['order'] = new Order();
-        var_dump($_SESSION['order']);
 
 
 
@@ -42,7 +37,7 @@ class Controller
 
             //if first name is valid store data
             if (Validation::validName($userFName)) {
-                $_SESSION['user']->setFname($userFName);
+                $_SESSION['order']->setFname($userFName);
             }
             //set an error if not valid
             else {
@@ -51,7 +46,7 @@ class Controller
 
             //if last name is valid store data
             if (Validation::validName($userLName)) {
-                $_SESSION['user']->setLname($userLName);
+                $_SESSION['order']->setLname($userLName);
             }
             //set an error if not valid
             else {
@@ -60,7 +55,7 @@ class Controller
 
             //if email is valid store data
             if (Validation::validEmail($userEmail)) {
-                $_SESSION['user']->setEmail($userEmail);
+                $_SESSION['order']->setEmail($userEmail);
             }
             //set an error if not valid
             else {
@@ -68,14 +63,16 @@ class Controller
 
             }
 
-            //if username is valid store data
-            $_SESSION['user']->setAddress($userAddress);
+            //if address is valid store data
+            $_SESSION['order']->setAddress($userAddress);
 
 
             if (empty($this->_f3->get('errors'))) {
                 header('location: summary');
             }
         }
+
+
 
         //store the user input to the hive
         $this->_f3->set('userFName', $_SESSION['order']->getFname());
@@ -85,7 +82,55 @@ class Controller
 
         //display the signup page
         $view = new Template();
-        echo $view->render('views/signup.html');
+        echo $view->render('views/checkout.html');
+    }
+
+    function cart()
+    {
+        //Reinitialize a session array
+        $_SESSION = array();
+
+        $_SESSION['order'] = new Order();
+
+        //Initialize variables for user input
+        $userShoes = array();
+
+        //If the form has been submitted, validate the data
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            var_dump($_POST);
+
+            //If shoes are selected
+            if (!empty($_POST['shoes'])) {
+
+                //Get user input
+                $userShoes = $_POST['shoes'];
+
+                //If shoes are valid
+                if (Validation::validShoes($userShoes)) {
+                    $_SESSION['order']->setShoes(implode(", ", $userShoes));
+                }
+                else {
+                    $this->_f3->set('errors["shoes"]', 'Invalid selection');
+                }
+            }
+
+            //If the error array is empty, redirect to summary page
+            if (empty($this->_f3->get('errors'))) {
+                header('location: checkout');
+            }
+        }
+
+        //var_dump($userShoes);
+
+        //Get the shoes from the Model and send them to the View
+        $this->_f3->set('shoes', DataLayer::getShoes());
+
+        //Add the user data to the hive
+        $this->_f3->set('userShoes', $userShoes);
+
+        //Display the second order form
+        $view = new Template();
+        echo $view->render('views/cart.html');
     }
 
     function summary()
@@ -172,13 +217,13 @@ class Controller
         echo $view->render('views/welcome.html');
     }
 
-    function outfits()
+    function shoes()
     {
         // save variable to the F3 "hive" - title
         $this->_f3->set('title', 'Outfits');
 
         // display the store page
         $view = new Template();
-        echo $view->render('views/outfits.html');
+        echo $view->render('views/shoes.html');
     }
 }

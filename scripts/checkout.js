@@ -1,4 +1,4 @@
-document.getElementById("signup").onsubmit = validate;
+document.getElementById("checkout").onsubmit = validate;
 function validate() {
 
     //flag variable
@@ -26,13 +26,23 @@ function validate() {
         isValid = false;
     }
 
-    //check address
-    let userAddress = document.getElementById("address").value;
-    if (userAddress === "") {
-        let erruserAddress = document.getElementById("err-address");
-        erruserAddress.style.display = "inline";
+    //check Username
+    let userName = document.getElementById("username").value;
+    if (userName === "") {
+        let errUserName = document.getElementById("err-username");
+        errUserName.style.display = "inline";
         isValid = false;
     }
+
+    //check Password
+    let passWord = document.getElementById("password").value;
+    if (passWord === "") {
+        let errPass = document.getElementById("err-password");
+        errPass.style.display = "inline";
+        isValid = false;
+    }
+
+
 
     // Check email
     let Email = document.getElementById("email").value;
