@@ -94,6 +94,7 @@ class Controller
         $_SESSION = array();
 
         $_SESSION['order'] = new Order();
+        $_SESSION['cart'] = new Cart();
 
         //Initialize variables for user input
         $userShoes = array();
@@ -111,6 +112,8 @@ class Controller
                 //If shoes are valid
                 if (Validation::validShoes($userShoes)) {
                     $_SESSION['order']->setShoes(implode(", ", $userShoes));
+                    $_SESSION['cart']->setTotalPrice(number_format((double)count($userShoes) * 150.00 * 1.1 + 10.00, 2));
+
                 }
                 else {
                     $this->_f3->set('errors["shoes"]', 'Invalid selection');

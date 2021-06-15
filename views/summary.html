@@ -30,6 +30,9 @@
                     <tr>
                         <td>Shoes: {{ @SESSION.order->getShoes() }}</td>
                     </tr>
+                    <tr>
+                        <td>Total Price: {{ @SESSION.cart->getTotalPrice() }}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
