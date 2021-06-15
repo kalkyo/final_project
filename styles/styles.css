@@ -4,6 +4,11 @@
     object-fit: cover;
 }*/
 
+#intro {
+    background-image: url('https://peang.greenriverdev.com/328/final_project/images/sneakerwall.jpg');
+    height: 110vh;
+}
+
 #frontpageoutfit .card-img-top {
     
 }
@@ -17,6 +22,10 @@
     position: absolute;
     left: 50%;
     transform: translatex(-50%);
+}
+
+#footer {
+    background-color: #eec356;
 }
 
 /* error validation   */
