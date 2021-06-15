@@ -58,5 +58,24 @@ class Validation
         return !!preg_match("/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])
                     (?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,20}$/", $password);
     }
+
+    //validate login
+    static function loginUser($userName): bool
+    {
+        if ($userName == "admin") {
+            return true;
+        }
+        else
+            return false;
+    }
+
+    static function loginPass($userPassword): bool
+    {
+        if ($userPassword == "@adminPassword") {
+            return true;
+        }
+        else
+            return false;
+    }
 }
 
