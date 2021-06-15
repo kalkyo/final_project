@@ -98,8 +98,6 @@ class Controller
         //Initialize variables for user input
         $userShoes = array();
 
-        $_POST['shoes'] = "";
-
         //If the form has been submitted, validate the data
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             var_dump($_POST);
@@ -117,12 +115,6 @@ class Controller
                 else {
                     $this->_f3->set('errors["shoes"]', 'Invalid selection');
                 }
-            }
-
-            if(!isset($_POST['shoes'])){
-                //do something when not set
-                $this->_f3->set('errors["shoes"]', 'Invalid selection');
-
             }
 
             //If the error array is empty, redirect to summary page
