@@ -49,5 +49,7 @@ were able to incorporate it into our project.
 ### BONUS: Incorporates Ajax that access data from a JSON file, PHP script, or API.
 * We did not incorporate Ajax
 
+# UML Class Diagram
+
 # ER Database Diagram
-![ERDiagram](ERDiagram.png)
+![ERDiagram](https://github.com/kalkyo/final_project/blob/main/images/ERDiagram.png "ERDiagram")
