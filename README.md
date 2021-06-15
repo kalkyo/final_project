@@ -1,10 +1,9 @@
 # StreetWear Storm
-A website allowing users to browse a catalog of shoes ranging in a variety of brands under the sneakers categories. 
-A user is presented with the home page showcasing the newest shoes added currently with graphics making the shoes pop. 
-To shop the user will navigate through the navbar showing the options of: Newest Arrivals, Mens, Women's and kids. 
-Upon navigating through the page users can pick out shoes and add them to the cart. Users can view the cart and 
-then proceed to checkout filling out user information. 
-Users who have signed up can track their orders that have been placed.
+A website allowing users to browse a catalog of shoes ranging in a variety of brands under the sneakers categories.
+A user is presented with the home page showcasing the newest shoes added currently with graphics making the shoes pop.
+Upon navigating through the page users can pick out shoes and add them to the cart. Users can view the cart and
+then proceed to checkout filling out user information.
+The admin can log in and track orders that have been placed.
 
 ## Authors
 * Peter Eang
@@ -22,7 +21,8 @@ Users who have signed up can track their orders that have been placed.
 * All routes are in the index.php and leverages templating language using the Fat-Free Framework
 
 ### 3. Has a clearly defined database layer using PDO and prepared statements. You should have at least two related tables.
-* Database layer is under model as data-layer.php. Cart detail and Shoe are the related tables (one to many relationship).
+* Database layer is under model as data-layer.php. Cart and Shoe are the related tables (one to many relationship). A
+  cart can have many shoes.
 
 ### 4. Data can be viewed and added
 * Database layer uses PDO and prepared statements to add, retrieve, and delete from the database.
@@ -31,15 +31,15 @@ Users who have signed up can track their orders that have been placed.
 * Each teammate has a history of commits and commits are clearly commented.
 
 ### 6. Uses OOP, and defines multiple classes, including at least one inheritance relationship.
-* Two classes. User and PremiumUser. User contains first and last name, username, password, and email. The Premium User
-  extends from the User class.
+* Three classes. Order, Cart, and shoe class. Order contains first and last name, email, and address. Shoe contains
+  the model, brand, and price. The Cart extends the Shoe class and has the total price.
 
 ### 7. Contains full Docblocks for all PHP files and follows PEAR standards.
 * All PHP files contains Docblocks and follows PEAR standards.
 
 ### 8. Has full validation on the client side through JavaScript and server side through PHP.
-* User and Premium User signup has full validation on the client side through JavaScript(scripts/signup.js)  and
-  through PHP (model/validation.php)
+* Checkout has full validation on the client side through JavaScript(scripts/checkout.js) and
+  through PHP (model/validation.php).
 
 ### 9. All code is clean, clear, and well-commented. DRY (Don't Repeat Yourself) is practiced.
 * All functions and files are well-commented.
@@ -54,3 +54,4 @@ Users who have signed up can track their orders that have been placed.
 # UML Class Diagram
 
 # ER Database Diagram
+
