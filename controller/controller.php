@@ -94,7 +94,6 @@ class Controller
             else {
                 $this->_f3->set('errors["password"]',
                     'Password must contain an uppercase, a number, and at least one special character');
-
             }*/
 
             if (empty($this->_f3->get('errors'))) {
@@ -130,100 +129,33 @@ class Controller
 
     function login()
     {
-        /*
-        CREATE TABLE users (
-            userid int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-            username varchar(20) NOT NULL,
-            password varchar(40) NOT NULL,
-            authlevel int(1) DEFAULT NULL
-        );
-        INSERT INTO users (username, password, authlevel) VALUES
-             ('jshmo', sha1('shmo123'), 1),
-     */
-
-        //Connect to database
-        try {
-            //Instantiate a PDO database object
-            $dbh = new PDO(DB_DSN, DB_USERNAME, DB_PASSWORD);
-                echo "Connect to database";
-        }
-        catch (PDOException $e) {
-            echo $e->getMessage(); //for debugging
-            echo "OOF";
-        }
-
-        // save variable to the F3 "hive" - title
-        $this->_f3->set('title', 'Streetwear Storm');
-
-        // check if the user is already logged in, if yes redirect to welcome page
-        if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-            header("location: welcome");
-            exit;
-        }
-
-        //Connect to DB
-        require $_SERVER['DOCUMENT_ROOT']."/../config.php";
-
-        // Define variables and initialize with empty values
-        $username = $password = "";
-        $username_err = $password_err = $login_err = "";
-
-        //Initialize error flag
-        $errFlag = false;
-
-        //See if the login form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $validLogin = false;
 
-            // Check if username is empty
-            if(empty(trim($_POST["username"]))){
-                $username_err = "Please enter username.";
-            } else{
-                $username = trim($_POST["username"]);
+            $username = $_POST['username'];
+            $userpass = $_POST['password'];
+
+            if(Validation::loginUser($username)){
+                $validLogin = true;
+            }else{
+                $validLogin = false;
+                $this->_f3->set('errors["username"]', "Incorrect Username");
             }
 
-            // Check if password is empty
-            if(empty(trim($_POST["password"]))){
-                $password_err = "Please enter your password.";
-            } else{
-                $password = trim($_POST["password"]);
+            if(Validation::loginPass($userpass)){
+                $validLogin = true;
+            }else{
+                $validLogin = false;
+                $this->_f3->set('errors["password"]', "Incorrect Password");
             }
 
-            //Query the DB
-            $sql = "SELECT * FROM users WHERE username = :un AND password = :pw";
-            $sql2 = "INSERT INTO users (username, password, authlevel) 
-                VALUES (:username, :password, :authlevel)";
-            $statement = $dbh->prepare($sql);
-
-            $un = $_POST['username'];
-            $pw = sha1($_POST['password']);
-            $statement->bindParam(':un', $un, PDO::PARAM_STR);
-            $statement->bindParam(':pw', $pw, PDO::PARAM_STR);
-            $statement->execute();
-            $count = $statement->rowCount();
-            $row = $statement->fetch(PDO::FETCH_ASSOC);
-            $authLevel = $row['authlevel'];
-
-            //Successful login
-            if ($count == 1) {
-
-                // record login in the session array
-                $_SESSION['un'] = $un;
-
-                //Send the user back where they came from
-                if (isset($_SESSION['page'])) {
-                    $loc = $_SESSION['page'];
-                } else {
-                    $loc = "welcome";
-                }
-                header("location: $loc");
-
-            } else {
-                //Set error flag
-                $errFlag = true;
+            //If there are no errors, redirect to profile route
+            if (empty($this->_f3->get('errors')) && $validLogin === true) {
+                header('location: ./');
             }
         }
 
-        // display the login page
+        //Display the home page
         $view = new Template();
         echo $view->render('views/login.html');
     }
@@ -267,7 +199,7 @@ class Controller
         // save variable to the F3 "hive" - title
         $this->_f3->set('title', 'Outfits');
 
-            // display the store page
+        // display the store page
         $view = new Template();
         echo $view->render('views/outfits.html');
     }

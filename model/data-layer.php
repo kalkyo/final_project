@@ -2,7 +2,6 @@
 
 /*  data-layer.php
  *  Return data for the final_project website
- *
  */
 //Connect to DB
 require_once($_SERVER['DOCUMENT_ROOT']."/../config.php");
@@ -59,4 +58,34 @@ class DataLayer
         return $id;
 
     }
+
+    /**
+     * getUser returns user object from database
+     * @return array An array of data rows
+     */
+    function getUser()
+    {
+        //1. Define the query
+        $sql = "SELECT id FROM users WHERE username = '$userName' and passcode = '$userPassword'";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters
+        $user = $_SESSION['user'];
+        $statement->bindParam(':fname', $user->getFname(), PDO::PARAM_STR);
+        $statement->bindParam(':lname', $user->getLname(), PDO::PARAM_STR);
+        $statement->bindParam(':username', $user->getUsername(), PDO::PARAM_STR);
+        $statement->bindParam(':password', $user->getPassword(), PDO::PARAM_STR);
+        $statement->bindParam(':email', $user->getEmail(), PDO::PARAM_STR);
+
+        //4. Execute the query
+        $statement->execute();
+
+        //5. Process the results (get userID)
+        $id = $this->_dbh->lastInsertId();
+        return $id;
+    }
+
+
 }

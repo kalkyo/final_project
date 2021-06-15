@@ -23,7 +23,7 @@ $dataLayer = new DataLayer();
     "penguM", "testWord12!"));*/
 
 // define default route
-$f3->route('GET /', function (){
+$f3->route('GET|POST /', function (){
 
     $GLOBALS['con']->home();
 });
