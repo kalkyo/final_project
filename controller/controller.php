@@ -18,6 +18,7 @@ class Controller
         echo $view->render('views/home.html');
     }
 
+    // checkout
     function signup()
     {
         //Reinitialize a session array
@@ -116,8 +117,10 @@ class Controller
 
     function summary()
     {
+        /*
         $userId = $GLOBALS['dataLayer']->saveUser($_SESSION['user']);
         $this->_f3->set('userId', $userId);
+        */
 
         //Display the second order form
         $view = new Template();
