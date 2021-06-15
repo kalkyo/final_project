@@ -129,6 +129,11 @@ class Controller
 
     function login()
     {
+        $_SESSION = array();
+
+        // save variable to the F3 "hive" - title
+        $this->_f3->set('title', 'Streetwear Storm');
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $validLogin = false;
 
@@ -151,7 +156,7 @@ class Controller
 
             //If there are no errors, redirect to profile route
             if (empty($this->_f3->get('errors')) && $validLogin === true) {
-                header('location: ./');
+                header('location: welcome');
             }
         }
 
@@ -162,14 +167,8 @@ class Controller
 
     function logout()
     {
-        session_regenerate_id();
-        session_destroy();
         $_SESSION = array();
-        header('location: login');
-
-        // display the home page
-        $view = new Template();
-        echo $view->render('views/home.html');
+        header('location: 328/final_project/');
     }
 
     function welcome()
@@ -178,16 +177,19 @@ class Controller
         $this->_f3->set('title', 'Welcome');
 
         //Connect to DB
-        require $_SERVER['DOCUMENT_ROOT']."/../config.php";
+       require $_SERVER['DOCUMENT_ROOT']."/../config.php";
 
+       /*
         // if the user is not logged in
         if (!isset($_SESSION['un'])) {
+
             // store the current page in the session
-            $_SESSION['page'] = 'welcome';
+            $_SESSION['page'] = 'welcome.html';
 
             // redirect user to login page
             header('location: login');
         }
+       */
 
         // display the welcome page
         $view = new Template();

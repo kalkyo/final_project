@@ -24,7 +24,6 @@ $dataLayer = new DataLayer();
 
 // define default route
 $f3->route('GET|POST /', function (){
-
     $GLOBALS['con']->home();
 });
 
@@ -44,6 +43,12 @@ $f3->route('GET /summary' , function ($f3)
 $f3->route('GET|POST /login' , function ($f3)
 {
     $GLOBALS['con']->login();
+});
+
+// define logout route
+$f3->route('GET /logout' , function ($f3)
+{
+    $GLOBALS['con']->logout();
 });
 
 
