@@ -50,4 +50,4 @@ were able to incorporate it into our project.
 * We did not incorporate Ajax
 
 # ER Database Diagram
-![ERDiagram](ERDiagram.png)
+<img width="629" alt="ER Diagram" src="https://user-images.githubusercontent.com/71622645/121985488-ab966900-cd49-11eb-8b6e-708001864265.png">
