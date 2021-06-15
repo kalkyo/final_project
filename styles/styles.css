@@ -9,10 +9,6 @@
     height: 110vh;
 }
 
-#frontpageoutfit .card-img-top {
-    
-}
-
 /* navbar styles */
 .navbar{
     background-color: #eec356;
@@ -24,15 +20,22 @@
     transform: translatex(-50%);
 }
 
-#footer {
-    background-color: #eec356;
-}
-
 /* error validation   */
 .err {
     color: darkred;
     padding-left: 1em;
     display: none;
 }
+
+#footer {
+    background-color: #eec356;
+}
+
+.img-thumbnail{
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+}
+
 
 

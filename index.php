@@ -24,6 +24,7 @@ $dataLayer = new DataLayer();
 
 // define default route
 $f3->route('GET|POST /', function (){
+
     $GLOBALS['con']->home();
 });
 
