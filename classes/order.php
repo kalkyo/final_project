@@ -1,36 +1,34 @@
 <?php
 
 /**
- * User class
- * Represents a user object with name, email ,username and password
+ * Order class
+ * Represents an order object with name, email ,username and address
  * @author Peter Eang & Jada Senebouttarath
  * @copyright 2021
  */
 
-class User
+class Order
 {
     private $_fname;
     private $_lname;
     private $_email;
-    private $_username;
-    private $_password;
+    private $_address;
 
     /**
      * Member constructor.
      * @param string $fname User's first name, default ""
      * @param string $lname User's last name, default ""
      * @param string $email User's email, default ""
-     * @param string $username User's username, default ""
-     * @param string $password User's password, default ""
-     * @return void
+     * @param string $address User's address, default ""
+     *
      */
-    function __construct($fname="", $lname="", $email = "", $username = "", $password = "")
+    function __construct($fname="", $lname="", $email="", $address="")
     {
         $this->_fname = $fname;
         $this->_lname = $lname;
         $this->_email = $email;
-        $this->_username = $username;
-        $this->_password = $password;
+        $this->_address = $address;
+
     }
 
     /**
@@ -91,39 +89,22 @@ class User
     }
 
     /**
-     * getUsername() function
-     * @return string User's username
+     * getAddress() function
+     * @return string User's address
      */
-    public function getUsername(): string
+    public function getAddress(): string
     {
-        return $this->_username;
+        return $this->_address;
     }
 
     /**
-     * setUsername() function
-     * @param string $userName User's username
+     * setAddress() function
+     * @param string $address User's address
      * @return void
      */
-    public function setUsername($userName): void
+    public function setAddress($address): void
     {
-        $this->_username = $userName;
+        $this->_address = $address;
     }
 
-    /**
-     * getPassword() function
-     * @return string User's password
-     */
-    public function getPassword(): string
-    {
-        return $this->_password;
-    }
-
-    /**
-     * setPassword() function
-     * @param string $password User's password
-     */
-    public function setPassword($password): void
-    {
-        $this->_password = $password;
-    }
 }

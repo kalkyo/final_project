@@ -28,11 +28,30 @@ class DataLayer
         }
     }
 
+    static function getShoes()
+    {
+        return array("af1" => "Air Force 1", "aj1" => "Air Jordan 1", "sb" => "SB Dunk Low",
+            "nmd" => "Human Race NMD", "superstar" => "Superstar 80s Bape", "yeezy" => "Yeezy Boost 700");
+    }
+
+
+    function saveOrder($order)
+    {
+        //1. define the query
+        $sql ="";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+
+    }
+
     /**
      * saveUser accepts an user object and inserts it into the database
      * @param $user
      * @return string
      */
+    /*
     function saveUser($user)
     {
         //1. Define the query
@@ -58,11 +77,13 @@ class DataLayer
         return $id;
 
     }
+    */
 
     /**
      * getUser returns user object from database
      * @return array An array of data rows
      */
+    /*
     function getUser()
     {
         //1. Define the query
@@ -86,6 +107,7 @@ class DataLayer
         $id = $this->_dbh->lastInsertId();
         return $id;
     }
+    */
 
 
 }
