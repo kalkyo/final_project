@@ -1,0 +1,109 @@
+<!--
+    Peter & Jada
+    05/30/2021
+    https://peang.greenriverdev.com/328/final_project/personalinfo.html/
+-->
+<!-- header-->
+<include href="views/header.html"></include>
+<body class="d-flex flex-column min-vh-100">
+
+<!-- Navigation bar -->
+<include href="views/navbar.html"></include>
+
+<!-- Main content -->
+<div class="container border border-1 rounded p-4 mt-4"> <!-- container -->
+    <h1>Create an Account</h1>
+    <p>Here you can create an account to save outfits and sign up as a premium user to submit your own outfit</p>
+    <hr>
+    <form action="#" method="post" id="signup">
+        <div class="row"> <!-- TOP row start-->
+            <!-- Get First Name -->
+            <div class="form-group col-md-6">
+                <label class="w-75 fw-bold" for="fname">First Name</label>
+                <input class="form-control" type="text"
+                       id="fname" name="fname" value="{{ @userFName }}"
+                       placeholder="First Name">
+                <!-- PHP Validation Here -->
+                <!-- JavaScript Validation -->
+                <span class="err" id="err-fname">Please Enter a First Name</span>
+                <check if="{{ isset(@errors['fname']) }}">
+                    <span class="err">{{ @errors['fname'] }}</span>
+                </check>
+            </div> <!-- First Name END -->
+
+            <!-- Last Name -->
+            <div class="form-group col-md-6">
+                <label class="w-75" for="lname"><strong>Last Name</strong></label>
+                <input type="text" class="form-control"
+                       id="lname" name="lname" value="{{ @userLName }}"
+                       placeholder="Last Name">
+                <!-- PHP Validation -->
+                <!-- JavaScript Validation -->
+                <span class="err" id="err-lname">Please Enter a Last Name</span>
+                <check if="{{ isset(@errors['lname']) }}">
+                    <span class="err">{{ @errors['lname'] }}</span>
+                </check>
+            </div> <!-- Last Name END -->
+        </div> <!--END of top row-->
+        <br>
+        <div class="row"> <!-- Middle row start -->
+            <!-- Username -->
+            <div class="form-group col-md-6">
+                <label class="w-75" for="username"><strong>Username</strong></label>
+                <input type="text" class="form-control"
+                       id="username" name="username" value="{{ @userName}}"
+                       placeholder="Username">
+                <!-- PHP Validation -->
+                <!-- JavaScript Validation -->
+                <span class="err" id="err-username">Please Enter a Username</span>
+            </div> <!-- Username END -->
+
+            <!-- Password -->
+            <div class="form-group col-md-6">
+                <label class="w-75" for="password"><strong>Password</strong></label>
+                <input type="password" class="form-control"
+                       id="password" name="password" value=""
+                       placeholder="New password">
+                <!-- PHP Validation -->
+                <!-- JavaScript Validation -->
+                <span class="err" id="err-password">Please Enter a Password</span>
+                <!-- Show/Hide Password -->
+                <label class="d-block">
+                    <input type="checkbox" id="passwordCheckbox" class="mx-1">Show Password</label>
+            </div> <!-- Password END -->
+        </div>
+        <!-- get email name -->
+        <div class="form-group">
+            <label for="email" class="fw-bold">Email</label>
+            <div class="col">
+                <input class="form-control" type="text" name="email" id="email" value="{{ @userEmail }}"
+                       placeholder="Your Email">
+                <!-- JavaScript Validation -->
+                <span class="err" id="err-email">Please Enter a Valid Email i.e "example@email.com"</span>
+            </div>
+        </div>
+        <!-- error message for invalid for email -->
+        <check if="{{ isset(@errors['email']) }}">
+            <span class="err">{{ @errors['email'] }}</span>
+        </check>
+        <!-- become premium user -->
+        <h6 class="mt-4">Premium User</h6>
+        <div class="form-check form-group">
+            <input type="checkbox" class="form-check-input"
+                   name="premium" id="premium" value="premium"
+            <check if="{{ @user == 'premium' }}">checked="checked"</check>>
+            <label class="form-check-label" for="premium">Sign me up for as a Premium User!</label>
+        </div>
+
+        <!-- next btn -->
+        <div class="text-end">
+            <input type="submit" class="btn btn-warning text-light" value="Create">
+        </div>
+    </form>
+</div> <!-- container end-->
+
+<script src="scripts/showPassword.js"></script>
+<script src="scripts/signup.js"></script>
+<!-- footer-->
+<include href="views/footer.html"></include>
+</body>

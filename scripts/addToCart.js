@@ -1,4 +1,4 @@
-document.getElementsByClassName("btn-check-outlined").onclick = change;
+document.getElementsByClassName("btn-check").onclick = change;
 function change()
 {
     let elem = document.getElementById("buttonCheck");
