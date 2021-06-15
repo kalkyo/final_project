@@ -49,5 +49,7 @@ Users can create an account to save favorite outfits and premium users can submi
 ### BONUS: Incorporates Ajax that access data from a JSON file, PHP script, or API.
 * We did not incorporate Ajax
 
+# UML Class Diagram
+
 # ER Database Diagram
 <img width="629" alt="ER Diagram" src="https://user-images.githubusercontent.com/71622645/121985488-ab966900-cd49-11eb-8b6e-708001864265.png">
