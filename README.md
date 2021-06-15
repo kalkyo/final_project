@@ -50,3 +50,4 @@ were able to incorporate it into our project.
 * We did not incorporate Ajax
 
 # ER Database Diagram
+![ERDiagram](ERDiagram.png)
