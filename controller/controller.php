@@ -87,6 +87,9 @@ class Controller
 
     function cart()
     {
+        // save variable to the F3 "hive" - title
+        $this->_f3->set('title', 'Streetwear Storm');
+
         //Reinitialize a session array
         $_SESSION = array();
 
@@ -135,6 +138,9 @@ class Controller
 
     function summary()
     {
+        // save variable to the F3 "hive" - title
+        $this->_f3->set('title', 'Summary');
+
         /*
         $userId = $GLOBALS['dataLayer']->saveUser($_SESSION['user']);
         $this->_f3->set('userId', $userId);
@@ -220,7 +226,7 @@ class Controller
     function shoes()
     {
         // save variable to the F3 "hive" - title
-        $this->_f3->set('title', 'Outfits');
+        $this->_f3->set('title', 'Shoes');
 
         // display the store page
         $view = new Template();

@@ -47,12 +47,12 @@ class Validation
                                       ([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email);
     }
 
-    //Return true if *all* condiments are valid
+    //Return true if *all* shoe are valid
     static function validShoes($shoes)
     {
         $validShoes = DataLayer::getShoes();
 
-        //Make sure each selected condiment is valid
+        //Make sure each selected shoe is valid
         foreach ($shoes as $userChoice) {
             if (!in_array($userChoice, $validShoes)) {
                 return false;
