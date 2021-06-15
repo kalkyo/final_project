@@ -55,6 +55,5 @@ The admin can log in and track orders that have been placed.
 ![UML Diagram](images/UML.png)
 
 # ER Database Diagram
-![ERD](images/ERD.png)
-
+![ERD.png](images/erd.png)
 
