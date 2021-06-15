@@ -5,8 +5,7 @@
 -->
 <!-- header-->
 <include href="views/header.html"></include>
-<body class="mb-3">
-<!-- Navigation bar -->
+<body class="d-flex flex-column min-vh-100"><!-- Navigation bar -->
 <!-- Navigation bar -->
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
@@ -38,10 +37,28 @@
     </div>
 </nav>
 
-
 <h1>Admin Page</h1>
 <div class="container">
-    <p>Test</p>
+    <table style="width:100%" class="display" id="guest-table">
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Cart ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Date</th>
+            <th>Total Price</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </div>
 
 <!-- footer-->
