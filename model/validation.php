@@ -60,7 +60,7 @@ class Validation
         }
 
         //All choices are valid
-        return true;
+        return false;
     }
 
     /*
