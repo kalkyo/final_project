@@ -52,6 +52,8 @@ The admin can log in and track orders that have been placed.
 * We did not incorporate Ajax
 
 # UML Class Diagram
+![UML Diagram](images/UML.png)
 
 # ER Database Diagram
+![ERD.png](images/erd.png)
 
