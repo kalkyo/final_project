@@ -71,7 +71,7 @@ class Validation
 
     static function loginPass($userPassword): bool
     {
-        if ($userPassword == "@adminPassword") {
+        if ($userPassword == "@adminPassword1") {
             return true;
         }
         else
