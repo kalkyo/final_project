@@ -27,30 +27,17 @@ class Controller
         // save variable to the F3 "hive" - title
         $this->_f3->set('title', 'Streetwear Storm');
 
-        //Instantiate a Member or Premium Member obj
-        if (isset($_POST['premium'])) {
-            $user = new PremiumUser();
-        } else {
-            $user = new User();
-        }
+        $_SESSION['order'] = new Order();
+        var_dump($_SESSION['order']);
 
-        $_SESSION['user'] = new User();
-        var_dump($_SESSION['user']);
 
-        //Initialize variables to store user input
-        $userFName = "";
-        $userLName = "";
-        $userEmail = "";
-        $userName = "";
-        $userPassword = "";
 
         // For if the form is submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $userFName = $_POST['fname'];
             $userLName = $_POST['lname'];
             $userEmail = $_POST['email'];
-            $userName = $_POST['username'];
-            $userPassword = $_POST['password'];
+            $userAddress = $_POST['address'];
 
 
             //if first name is valid store data
@@ -82,20 +69,8 @@ class Controller
             }
 
             //if username is valid store data
-            $_SESSION['user']->setUsername($userName);
+            $_SESSION['user']->setAddress($userAddress);
 
-            //if password is valid store data
-            $_SESSION['user']->setPassword($userPassword);
-
-            /*//if password is valid store data
-            if (Validation::isValidPassword($userPassword)) {
-                $_SESSION['password'] = $userPassword;
-            }
-            //set an error if not valid
-            else {
-                $this->_f3->set('errors["password"]',
-                    'Password must contain an uppercase, a number, and at least one special character');
-            }*/
 
             if (empty($this->_f3->get('errors'))) {
                 header('location: summary');
@@ -103,12 +78,10 @@ class Controller
         }
 
         //store the user input to the hive
-        $this->_f3->set('user', $_POST['premium']);
-        $this->_f3->set('userFName', $_SESSION['user']->getFname());
-        $this->_f3->set('userLName', $_SESSION['user']->getLname());
-        $this->_f3->set('userName', $_SESSION['user']->getUsername());
-        $this->_f3->set('userPassword', $_SESSION['user']->getPassword());
-        $this->_f3->set('userEmail', $_SESSION['user']->getEmail());
+        $this->_f3->set('userFName', $_SESSION['order']->getFname());
+        $this->_f3->set('userLName', $_SESSION['order']->getLname());
+        $this->_f3->set('userAddress', $_SESSION['order']->getAddress());
+        $this->_f3->set('userEmail', $_SESSION['order']->getEmail());
 
         //display the signup page
         $view = new Template();

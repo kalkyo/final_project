@@ -57,31 +57,18 @@
                 <!-- JavaScript Validation -->
                 <span class="err" id="err-username">Please Enter a Username</span>
             </div> <!-- Username END -->
-
-            <!-- Password -->
+            <!-- get email name -->
             <div class="form-group col-md-6">
-                <label class="w-75" for="password"><strong>Password</strong></label>
-                <input type="password" class="form-control"
-                       id="password" name="password" value=""
-                       placeholder="New password">
-                <!-- PHP Validation -->
-                <!-- JavaScript Validation -->
-                <span class="err" id="err-password">Please Enter a Password</span>
-                <!-- Show/Hide Password -->
-                <label class="d-block">
-                    <input type="checkbox" id="passwordCheckbox" class="mx-1">Show Password</label>
-            </div> <!-- Password END -->
-        </div>
-        <!-- get email name -->
-        <div class="form-group">
-            <label for="email" class="fw-bold">Email</label>
-            <div class="col">
-                <input class="form-control" type="text" name="email" id="email" value="{{ @userEmail }}"
-                       placeholder="Your Email">
-                <!-- JavaScript Validation -->
-                <span class="err" id="err-email">Please Enter a Valid Email i.e "example@email.com"</span>
+                <label for="email" class="fw-bold">Email</label>
+                <div class="col">
+                    <input class="form-control" type="text" name="email" id="email" value="{{ @userEmail }}"
+                           placeholder="Your Email">
+                    <!-- JavaScript Validation -->
+                    <span class="err" id="err-email">Please Enter a Valid Email i.e "example@email.com"</span>
+                </div>
             </div>
         </div>
+
         <!-- error message for invalid for email -->
         <check if="{{ isset(@errors['email']) }}">
             <span class="err">{{ @errors['email'] }}</span>
