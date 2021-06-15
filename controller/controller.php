@@ -19,7 +19,7 @@ class Controller
     }
 
     // checkout
-    function checkout()
+    function signup()
     {
         //Reinitialize a session array
         $_SESSION = array();
@@ -112,7 +112,7 @@ class Controller
 
         //display the signup page
         $view = new Template();
-        echo $view->render('views/checkout.html');
+        echo $view->render('views/signup.html');
     }
 
     function summary()
@@ -199,13 +199,13 @@ class Controller
         echo $view->render('views/welcome.html');
     }
 
-    function shoes()
+    function outfits()
     {
         // save variable to the F3 "hive" - title
-        $this->_f3->set('title', 'Shoes');
+        $this->_f3->set('title', 'Outfits');
 
         // display the store page
         $view = new Template();
-        echo $view->render('views/shoes.html');
+        echo $view->render('views/outfits.html');
     }
 }

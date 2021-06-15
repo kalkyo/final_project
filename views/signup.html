@@ -12,8 +12,8 @@
 
 <!-- Main content -->
 <div class="container border border-1 rounded p-4 mt-4"> <!-- container -->
-    <h1>Create an Account</h1>
-    <p>Here you can create an account to save outfits and sign up as a premium user to submit your own outfit</p>
+    <h1>Place your order here!</h1>
+    <p>Here you can place an order for the shoe's on the previous page.</p>
     <hr>
     <form action="#" method="post" id="signup">
         <div class="row"> <!-- TOP row start-->
@@ -47,12 +47,12 @@
         </div> <!--END of top row-->
         <br>
         <div class="row"> <!-- Middle row start -->
-            <!-- Username -->
+            <!-- Address -->
             <div class="form-group col-md-6">
-                <label class="w-75" for="username"><strong>Username</strong></label>
+                <label class="w-75" for="address"><strong>Address</strong></label>
                 <input type="text" class="form-control"
-                       id="username" name="username" value="{{ @userName}}"
-                       placeholder="Username">
+                       id="address" name="address" value="{{ @userAddress}}"
+                       placeholder="Address">
                 <!-- PHP Validation -->
                 <!-- JavaScript Validation -->
                 <span class="err" id="err-username">Please Enter a Username</span>
