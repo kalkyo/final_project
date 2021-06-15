@@ -94,7 +94,6 @@ class Controller
             else {
                 $this->_f3->set('errors["password"]',
                     'Password must contain an uppercase, a number, and at least one special character');
-
             }*/
 
             if (empty($this->_f3->get('errors'))) {
@@ -200,7 +199,7 @@ class Controller
         // save variable to the F3 "hive" - title
         $this->_f3->set('title', 'Outfits');
 
-            // display the store page
+        // display the store page
         $view = new Template();
         echo $view->render('views/outfits.html');
     }

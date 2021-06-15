@@ -1,8 +1,10 @@
 # StreetWear Storm
-An online catalog of street wear outfits to help inspire a user's outfit.
-Users are presented with a variety of street style outfits based on shoes.
-Each outfit will include information on specific articles of clothing.
-Users can create an account to save favorite outfits and premium users can submit their own outfits.
+A website allowing users to browse a catalog of shoes ranging in a variety of brands under the sneakers categories. 
+A user is presented with the home page showcasing the newest shoes added currently with graphics making the shoes pop. 
+To shop the user will navigate through the navbar showing the options of: Newest Arrivals, Mens, Women's and kids. 
+Upon navigating through the page users can pick out shoes and add them to the cart. Users can view the cart and 
+then proceed to checkout filling out user information. 
+Users who have signed up can track their orders that have been placed.
 
 ## Authors
 * Peter Eang
@@ -20,7 +22,7 @@ Users can create an account to save favorite outfits and premium users can submi
 * All routes are in the index.php and leverages templating language using the Fat-Free Framework
 
 ### 3. Has a clearly defined database layer using PDO and prepared statements. You should have at least two related tables.
-* Database layer is under model as data-layer.php. Users and favorites are related (one to many relationship).
+* Database layer is under model as data-layer.php. Cart detail and Shoe are the related tables (one to many relationship).
 
 ### 4. Data can be viewed and added
 * Database layer uses PDO and prepared statements to add, retrieve, and delete from the database.
@@ -52,4 +54,3 @@ Users can create an account to save favorite outfits and premium users can submi
 # UML Class Diagram
 
 # ER Database Diagram
-<img width="629" alt="ER Diagram" src="https://user-images.githubusercontent.com/71622645/121985488-ab966900-cd49-11eb-8b6e-708001864265.png">
