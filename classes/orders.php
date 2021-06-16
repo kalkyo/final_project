@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Order class
- * Represents an order object with name, email ,username and address
+ * Orders class
+ * Represents an Orders object with name, email ,username and address
  * @author Peter Eang & Jada Senebouttarath
  * @copyright 2021
  */
 
-class Order
+class Orders
 {
     private $_fname;
     private $_lname;

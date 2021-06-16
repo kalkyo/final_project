@@ -21,13 +21,22 @@
                         <td>User ID: {{ @userId }}</td>
                     </tr>
                     <tr>
-                        <td>Name: {{ @SESSION.order->getFname() }} {{ @SESSION.order->getLname() }}</td>
+                        <td>Name: {{ @SESSION.orders->getFname() }} {{ @SESSION.orders->getLname() }}</td>
                     </tr>
                     <tr>
-                        <td>Address: {{ @SESSION.order->getAddress() }}</td>
+                        <td>Address: {{ @SESSION.orders->getAddress() }}</td>
                     </tr>
                     <tr>
-                        <td>Shoes: {{ @SESSION.order->getShoes() }}</td>
+                        <td>City: {{ @SESSION.orders->getCity() }}</td>
+                    </tr>
+                    <tr>
+                        <td>State: {{ @SESSION.orders->getState }}</td>
+                    </tr>
+                    <tr>
+                        <td>Zipcode: {{ @SESSION.orders->getZipcode() }}</td>
+                    </tr>
+                    <tr>
+                        <td>Shoes: {{ @SESSION.cart->getShoes() }}</td>
                     </tr>
                     <tr>
                         <td>Total Price: {{ @SESSION.cart->getTotalPrice() }}</td>

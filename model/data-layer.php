@@ -33,11 +33,51 @@ class DataLayer
             "nmd" => "Human Race NMD", "superstar" => "Superstar 80s Bape", "yeezy" => "Yeezy Boost 700");
     }
 
-    static function saveOrder($order)
+    function saveCart($cart)
     {
         //1. Define the query
-        $sql = "INSERT INTO cart (total_price, shoe_id)
-               VALUES (:total_price, :shoe_id)";
+        $sql = "INSERT INTO cart (total_price, shoes)
+               VALUES (:total_price, :shoes)";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters
+        $statement->bindParam(':total_price', $cart->getTotalPrice(), PDO::PARAM_INT);
+        $statement->bindParam(':shoes', $cart->getShoes(), PDO::PARAM_STR);
+
+        //4. Execute the query
+        $statement->execute();
+
+        //5. Process the results (get CartID)
+        $id = $this->_dbh->lastInsertId();
+        return $id;
+    }
+
+    function saveOrders($orders)
+    {
+        //1. Define the query
+        $sql = "INSERT INTO orders (fname, lname, email, address, city, state, zipcode)
+               VALUES (:fname, :lname, :email, :address, :city, :state, :zipcode)";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters
+        $statement->bindParam(':fname', $orders->getFname(), PDO::PARAM_STR);
+        $statement->bindParam(':lname', $orders->getLname(), PDO::PARAM_STR);
+        $statement->bindParam(':email', $orders->getEmail(), PDO::PARAM_STR);
+        $statement->bindParam(':address', $orders->getAddress(), PDO::PARAM_STR);
+        $statement->bindParam(':city', $orders->getCity(), PDO::PARAM_STR);
+        $statement->bindParam(':state', $orders->getState(), PDO::PARAM_STR);
+
+
+        //4. Execute the query
+        $statement->execute();
+
+        //5. Process the results (get CartID)
+        $id = $this->_dbh->lastInsertId();
+        return $id;
     }
 
     static function getStates(): array

@@ -72,6 +72,4 @@ class Shoe
     {
         $this->_price = $price;
     }
-
-
 }

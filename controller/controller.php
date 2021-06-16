@@ -18,87 +18,18 @@ class Controller
         echo $view->render('views/home.html');
     }
 
-    // checkout
-    function checkout()
-    {
-
-        // save variable to the F3 "hive" - title
-        $this->_f3->set('title', 'Streetwear Storm');
-
-
-
-        // For if the form is submitted
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $userFName = $_POST['fname'];
-            $userLName = $_POST['lname'];
-            $userEmail = $_POST['email'];
-            $userAddress = $_POST['address'];
-
-
-            //if first name is valid store data
-            if (Validation::validName($userFName)) {
-                $_SESSION['order']->setFname($userFName);
-            }
-            //set an error if not valid
-            else {
-                $this->_f3->set('errors["fname"]', 'Please enter a valid first name');
-            }
-
-            //if last name is valid store data
-            if (Validation::validName($userLName)) {
-                $_SESSION['order']->setLname($userLName);
-            }
-            //set an error if not valid
-            else {
-                $this->_f3->set('errors["lname"]', 'Please enter a valid last name');
-            }
-
-            //if email is valid store data
-            if (Validation::validEmail($userEmail)) {
-                $_SESSION['order']->setEmail($userEmail);
-            }
-            //set an error if not valid
-            else {
-                $this->_f3->set('errors["email"]', 'Please enter a valid email');
-
-            }
-
-            //if address is valid store data
-            $_SESSION['order']->setAddress($userAddress);
-
-
-            if (empty($this->_f3->get('errors'))) {
-                header('location: summary');
-            }
-        }
-
-        //Get the shoes from the Model and send them to the View
-        $this->_f3->set('states', DataLayer::getStates());
-
-        //store the user input to the hive
-        $this->_f3->set('userFName', $_SESSION['order']->getFname());
-        $this->_f3->set('userLName', $_SESSION['order']->getLname());
-        $this->_f3->set('userAddress', $_SESSION['order']->getAddress());
-        $this->_f3->set('userEmail', $_SESSION['order']->getEmail());
-
-        //display the checkout page
-        $view = new Template();
-        echo $view->render('views/checkout.html');
-    }
-
     function cart()
     {
         // save variable to the F3 "hive" - title
         $this->_f3->set('title', 'Streetwear Storm');
 
+        //Initialize variables for user input
+        $userShoes = array();
+
         //Reinitialize a session array
         $_SESSION = array();
 
-        $_SESSION['order'] = new Order();
         $_SESSION['cart'] = new Cart();
-
-        //Initialize variables for user input
-        $userShoes = array();
 
         //If the form has been submitted, validate the data
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -111,9 +42,8 @@ class Controller
 
                 //If shoes are valid
                 if (Validation::validShoes($userShoes)) {
-                    $_SESSION['order']->setShoes(implode(", ", $userShoes));
+                    $_SESSION['cart']->setShoes(implode(", ", $userShoes));
                     $_SESSION['cart']->setTotalPrice(number_format((double)count($userShoes) * 150.00 * 1.1 + 10.00, 2));
-
                 }
                 else {
                     $this->_f3->set('errors["shoes"]', 'Invalid selection');
@@ -132,9 +62,92 @@ class Controller
         //Add the user data to the hive
         $this->_f3->set('userShoes', $userShoes);
 
-        //Display the second order form
+        //Display the second orders form
         $view = new Template();
         echo $view->render('views/cart.html');
+    }
+
+    // checkout
+    function checkout()
+    {
+
+        // save variable to the F3 "hive" - title
+        $this->_f3->set('title', 'Streetwear Storm');
+
+        $_SESSION['orders'] = new Orders();
+
+        // For if the form is submitted
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $userFName = $_POST['fname'];
+            $userLName = $_POST['lname'];
+            $userEmail = $_POST['email'];
+            $userAddress = $_POST['address'];
+            $userCity = $_POST['city'];
+            $userState = $_POST['state'];
+            $userZipcode = $_POST['zipcode'];
+
+
+
+            //if first name is valid store data
+            if (Validation::validName($userFName)) {
+                $_SESSION['orders']->setFname($userFName);
+            }
+            //set an error if not valid
+            else {
+                $this->_f3->set('errors["fname"]', 'Please enter a valid first name');
+            }
+
+            //if last name is valid store data
+            if (Validation::validName($userLName)) {
+                $_SESSION['orders']->setLname($userLName);
+            }
+            //set an error if not valid
+            else {
+                $this->_f3->set('errors["lname"]', 'Please enter a valid last name');
+            }
+
+            //if email is valid store data
+            if (Validation::validEmail($userEmail)) {
+                $_SESSION['orders']->setEmail($userEmail);
+            }
+            //set an error if not valid
+            else {
+                $this->_f3->set('errors["email"]', 'Please enter a valid email');
+
+            }
+
+            //if address is valid store data
+            $_SESSION['orders']->setAddress($userAddress);
+
+            $_SESSION['orders']->setCity($userCity);
+
+            $_SESSION['orders']->setState($userState);
+
+            $_SESSION['orders']->setZipcode($userZipcode);
+
+
+
+            if (empty($this->_f3->get('errors'))) {
+                header('location: summary');
+            }
+        }
+
+        //Get the shoes from the Model and send them to the View
+        $this->_f3->set('states', DataLayer::getStates());
+
+        //store the user input to the hive
+        $this->_f3->set('userFName', $_SESSION['orders']->getFname());
+        $this->_f3->set('userLName', $_SESSION['orders']->getLname());
+        $this->_f3->set('userAddress', $_SESSION['orders']->getAddress());
+        $this->_f3->set('userEmail', $_SESSION['orders']->getEmail());
+        $this->_f3->set('userCity', $_SESSION['orders']->getCity());
+        $this->_f3->set('userState', $_SESSION['orders']->getState());
+        $this->_f3->set('userZipcode', $_SESSION['orders']->getZipcode());
+
+
+        //display the checkout page
+        $view = new Template();
+        echo $view->render('views/checkout.html');
     }
 
     function summary()
@@ -142,17 +155,19 @@ class Controller
         // save variable to the F3 "hive" - title
         $this->_f3->set('title', 'Summary');
 
-        /*
-        $userId = $GLOBALS['dataLayer']->saveUser($_SESSION['user']);
-        $this->_f3->set('userId', $userId);
-        */
+        //Save the cart and orders to the database
+        $cartId = $GLOBALS['dataLayer']->saveCart($_SESSION['cart']);
+        $this->_f3->set('cartId', $cartId);
 
-        //Display the second order form
+        $ordersId = $GLOBALS['dataLayer']->saveOrders($_SESSION['orders']);
+        $this->_f3->set('ordersId', $ordersId);
+
+        //Display the second orders form
         $view = new Template();
         echo $view->render('views/summary.html');
 
         //This might be problematic
-        unset($_SESSION['order']);
+        unset($_SESSION['orders']);
     }
 
     function login()
@@ -206,18 +221,6 @@ class Controller
 
         //Connect to DB
        require $_SERVER['DOCUMENT_ROOT']."/../config.php";
-
-       /*
-        // if the user is not logged in
-        if (!isset($_SESSION['un'])) {
-
-            // store the current page in the session
-            $_SESSION['page'] = 'welcome.html';
-
-            // redirect user to login page
-            header('location: login');
-        }
-       */
 
         // display the welcome page
         $view = new Template();
