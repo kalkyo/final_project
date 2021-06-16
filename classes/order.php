@@ -110,7 +110,8 @@ class Order
     }
 
     /**
-     * @return mixed|string
+     * getShoes() function
+     * @return mixed|string User's shoe selection
      */
     public function getShoes()
     {
@@ -118,6 +119,7 @@ class Order
     }
 
     /**
+     * set
      * @param mixed|string $shoes
      */
     public function setShoes($shoes)

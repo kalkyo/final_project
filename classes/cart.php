@@ -35,8 +35,4 @@ class Cart extends Shoe
     {
         $this->_totalPrice = $totalPrice;
     }
-
-
-
-
 }
