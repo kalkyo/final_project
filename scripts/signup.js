@@ -34,6 +34,29 @@ function validate() {
         isValid = false;
     }
 
+    //check city
+    let userCity = document.getElementById("city").value;
+    if (userCity === "") {
+        let erruserCity = document.getElementById("err-city");
+        erruserCity.style.display = "inline";
+        isValid = false;
+    }
+
+    //check zipcode
+    let userZipcode = document.getElementById("zipcode").value;
+    let regexp;
+    /*if (userZipcode === "" || userZipcode < 10 || userZipcode > 10) {
+        let erruserZipcode = document.getElementById("err-zipcode");
+        erruserZipcode.style.display = "inline";
+        isValid = false;
+    }*/
+    regexp = /^[0-9]{5}(?:-[0-9]{4})?$/;
+    if (!regexp.test(userZipcode)) {
+        let erruserZipcode = document.getElementById("err-zipcode");
+        erruserZipcode.style.display = "inline";
+        isValid = false;
+    }
+
     // Check email
     let Email = document.getElementById("email").value;
     if (Email === "") {

@@ -70,9 +70,11 @@
             <!-- city -->
             <div class="row">
                 <div class="form-group col-4">
-                    <label class="w-75" for="inputCity">City</label>
-                    <input type="text" class="form-control" id="inputCity"
-                    placeholder="City">
+                    <label class="w-75" for="city">City</label>
+                    <input type="text" class="form-control"
+                           id="city"
+                           name="city" value="{{ @userCity }}"
+                           placeholder="City">
                     <!-- JavaScript Validation -->
                     <span class="err" id="err-city">Please Enter a City</span>
                 </div>
@@ -91,14 +93,14 @@
                 </div>
                 <!-- zip code -->
                 <div class="form-group col-4">
-                    <label class="w-75" for="inputZip">Zip</label>
-                    <input type="text" class="form-control" id="inputZip"
+                    <label class="w-75" for="zipcode">Zip</label>
+                    <input type="text" class="form-control" id="zipcode"
                     placeholder="Zip Code">
                     <!-- PHP Validation Here -->
                     <!-- JavaScript Validation -->
-                    <span class="err" id="err-zip">Please Enter a Zip Code</span>
+                    <span class="err" id="err-zipcode">Please Enter a Zip Code</span>
                 </div>
-                <check if="{{ isset(@errors['zip']) }}">
+                <check if="{{ isset(@errors['zipcode']) }}">
                     <span class="err">{{ @errors['zip'] }}</span>
                 </check>
             </div>

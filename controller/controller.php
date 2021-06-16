@@ -72,7 +72,8 @@ class Controller
             }
         }
 
-
+        //Get the shoes from the Model and send them to the View
+        $this->_f3->set('states', DataLayer::getStates());
 
         //store the user input to the hive
         $this->_f3->set('userFName', $_SESSION['order']->getFname());
