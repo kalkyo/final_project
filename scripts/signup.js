@@ -46,11 +46,6 @@ function validate() {
     //check zipcode
     let userZipcode = document.getElementById("zipcode").value;
     let regexp;
-    /*if (userZipcode === "" || userZipcode < 10 || userZipcode > 10) {
-        let erruserZipcode = document.getElementById("err-zipcode");
-        erruserZipcode.style.display = "inline";
-        isValid = false;
-    }*/
     regexp = /^[0-9]{5}(?:-[0-9]{4})?$/;
     if (!regexp.test(userZipcode)) {
         let erruserZipcode = document.getElementById("err-zipcode");

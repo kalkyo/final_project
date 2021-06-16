@@ -81,7 +81,7 @@ class Controller
         $this->_f3->set('userAddress', $_SESSION['order']->getAddress());
         $this->_f3->set('userEmail', $_SESSION['order']->getEmail());
 
-        //display the signup page
+        //display the checkout page
         $view = new Template();
         echo $view->render('views/checkout.html');
     }
@@ -102,7 +102,6 @@ class Controller
 
         //If the form has been submitted, validate the data
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            var_dump($_POST);
 
             //If shoes are selected
             if (!empty($_POST['shoes'])) {
@@ -126,8 +125,6 @@ class Controller
                 header('location: checkout');
             }
         }
-
-        //var_dump($userShoes);
 
         //Get the shoes from the Model and send them to the View
         $this->_f3->set('shoes', DataLayer::getShoes());

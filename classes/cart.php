@@ -34,5 +34,4 @@ class Cart extends Shoe
     public function setTotalPrice($totalPrice): void
     {
         $this->_totalPrice = $totalPrice;
-    }
-}
+    }}

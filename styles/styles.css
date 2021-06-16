@@ -1,9 +1,3 @@
-/*#outfitcatalog .card-img-top {
-    width: 100%;
-    height: 20vw;
-    object-fit: cover;
-}*/
-
 #intro {
     background-image: url('https://peang.greenriverdev.com/328/final_project/images/sneakerwall.jpg');
     height: 110vh;
@@ -12,7 +6,6 @@
 /* navbar styles */
 .navbar {
     background-color: #eec356;
-
 }
 
 .navbar-nav.navbar-center {
@@ -28,6 +21,7 @@
     display: none;
 }
 
+/* Footer color */
 #footer {
     background-color: #eec356;
 }
@@ -37,6 +31,3 @@
     height: 400px;
     object-fit: contain;
 }
-
-
-
