@@ -80,8 +80,7 @@ class Validation
     {
         if ($userName == "admin") {
             return true;
-        }
-        else
+        } else
             return false;
     }
 
@@ -89,8 +88,7 @@ class Validation
     {
         if ($userPassword == "@adminPassword1") {
             return true;
-        }
-        else
+        } else
             return false;
     }
 }

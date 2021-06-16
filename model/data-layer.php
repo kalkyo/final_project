@@ -4,7 +4,7 @@
  *  Return data for the final_project website
  */
 //Connect to DB
-require_once($_SERVER['DOCUMENT_ROOT']."/../config.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/../config.php");
 
 class DataLayer
 {

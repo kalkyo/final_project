@@ -23,7 +23,7 @@ class Order
      * @param string $address User's address, default ""
      *
      */
-    function __construct($fname="", $lname="", $email="", $address="", $_shoes="")
+    function __construct($fname = "", $lname = "", $email = "", $address = "", $_shoes = "")
     {
         $this->_fname = $fname;
         $this->_lname = $lname;
@@ -119,14 +119,13 @@ class Order
     }
 
     /**
-     * set
+     * setShoes() function
      * @param mixed|string $shoes
      */
     public function setShoes($shoes)
     {
         $this->_shoes = $shoes;
     }
-
 
 
 }

@@ -5,6 +5,8 @@ Upon navigating through the page users can pick out shoes and add them to the ca
 then proceed to checkout filling out user information.
 The admin can log in and track orders that have been placed.
 
+* Admin Page login is admin and the password is @adminPassword1
+
 ## Authors
 * Peter Eang
 * Jada Senebouttarath
@@ -31,15 +33,15 @@ The admin can log in and track orders that have been placed.
 * Each teammate has a history of commits and commits are clearly commented.
 
 ### 6. Uses OOP, and defines multiple classes, including at least one inheritance relationship.
-* Three classes. Order, Cart, and shoe class. Order contains first and last name, email, and address. Shoe contains
+* Three classes. Order, Cart, and Shoe class. Order contains first and last name, email, and address. Shoe contains
   the model, brand, and price. The Cart extends the Shoe class and has the total price.
 
 ### 7. Contains full Docblocks for all PHP files and follows PEAR standards.
 * All PHP files contains Docblocks and follows PEAR standards.
 
 ### 8. Has full validation on the client side through JavaScript and server side through PHP.
-* Checkout has full validation on the client side through JavaScript(scripts/checkout.js) and
-  through PHP (model/validation.php).
+* Checkout and admin has full validation on the client side through JavaScript (scripts/signup.js), 
+  (scripts/showPassword.js), and through PHP (model/validation.php).
 
 ### 9. All code is clean, clear, and well-commented. DRY (Don't Repeat Yourself) is practiced.
 * All functions and files are well-commented.
@@ -56,4 +58,3 @@ The admin can log in and track orders that have been placed.
 
 # ER Database Diagram
 ![ERD.png](images/erd.png)
-

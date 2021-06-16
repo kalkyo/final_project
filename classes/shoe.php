@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Shoe class
  * Represents a shoe object with the model, brand, and price
@@ -17,7 +18,7 @@ class Shoe
      * @param $_brand
      * @param $_price
      */
-    public function __construct($_model="", $_brand="", $_price=0)
+    public function __construct($_model = "", $_brand = "", $_price = 0)
     {
         $this->_model = $_model;
         $this->_brand = $_brand;
@@ -71,9 +72,6 @@ class Shoe
     {
         $this->_price = $price;
     }
-
-
-
 
 
 }

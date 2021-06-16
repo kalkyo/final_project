@@ -1,4 +1,5 @@
 document.getElementById("signup").onsubmit = validate;
+
 function validate() {
 
     //flag variable

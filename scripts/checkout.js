@@ -1,4 +1,5 @@
 document.getElementById("checkout").onsubmit = validate;
+
 function validate() {
 
     //flag variable
@@ -41,7 +42,6 @@ function validate() {
         errPass.style.display = "inline";
         isValid = false;
     }
-
 
 
     // Check email

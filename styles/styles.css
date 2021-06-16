@@ -10,10 +10,11 @@
 }
 
 /* navbar styles */
-.navbar{
+.navbar {
     background-color: #eec356;
 
 }
+
 .navbar-nav.navbar-center {
     position: absolute;
     left: 50%;
@@ -31,7 +32,7 @@
     background-color: #eec356;
 }
 
-.img-thumbnail{
+.img-thumbnail {
     width: 400px;
     height: 400px;
     object-fit: contain;

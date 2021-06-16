@@ -4,8 +4,7 @@ function Toggle() {
     let temp = document.getElementById("password");
     if (temp.type === "password") {
         temp.type = "text";
-    }
-    else {
+    } else {
         temp.type = "password";
     }
 }

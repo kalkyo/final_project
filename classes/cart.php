@@ -14,7 +14,7 @@ class Cart extends Shoe
      * Cart constructor.
      * @param $_totalPrice
      */
-    public function __construct($_totalPrice=0)
+    public function __construct($_totalPrice = 0)
     {
         parent::__construct();
         $this->_totalPrice = $_totalPrice;
