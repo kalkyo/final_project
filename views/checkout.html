@@ -81,7 +81,7 @@
                 <!-- state -->
                 <div class="form-group col-4">
                     <label class="w-75" for="state">State</label>
-                    <select id="state" name="state" class="form-control">
+                    <select class="form-select" id="state" name="state" class="form-control">
                         <repeat group="{{ @states }}" value="{{ @state }}">
                             <option value="{{ @state }}"
                             <check if="{{ @state == @userState }}">
