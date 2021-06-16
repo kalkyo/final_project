@@ -48,7 +48,7 @@
         <br>
         <div class="row"> <!-- Middle row start -->
             <!-- Address -->
-            <div class="form-group col-md-6">
+            <div class="form-group">
                 <label class="w-75" for="address"><strong>Address</strong></label>
                 <input type="text" class="form-control"
                        id="address" name="address" value="{{ @userAddress}}"
@@ -56,9 +56,54 @@
                 <!-- PHP Validation -->
                 <!-- JavaScript Validation -->
                 <span class="err" id="err-address">Please Enter an Address</span>
-            </div> <!-- Username END -->
+            </div>
+            <br>
+            <!-- Address line 2 -->
+            <div class="form-group mt-2">
+                    <input type="text" class="form-control"
+                           id="inputAddress2" name="inputAddress2"
+                           placeholder="Apartment, studio, or floor">
+            </div>
+        </div>
+
+        <!-- Address END -->
+            <!-- city -->
+            <div class="row">
+                <div class="form-group col-4">
+                    <label class="w-75" for="inputCity">City</label>
+                    <input type="text" class="form-control" id="inputCity"
+                    placeholder="City">
+                    <!-- JavaScript Validation -->
+                    <span class="err" id="err-city">Please Enter a City</span>
+                </div>
+                <!-- state -->
+                <div class="form-group col-4">
+                    <label class="w-75" for="state">State</label>
+                    <select id="state" name="state" class="form-control">
+                        <repeat group="{{ @states }}" value="{{ @state }}">
+                            <option value="{{ @state }}"
+                            <check if="{{ @state == @userState }}">
+                                selected
+                            </check>
+                            >{{ @state }}</option>
+                        </repeat>
+                    </select>
+                </div>
+                <!-- zip code -->
+                <div class="form-group col-4">
+                    <label class="w-75" for="inputZip">Zip</label>
+                    <input type="text" class="form-control" id="inputZip"
+                    placeholder="Zip Code">
+                    <!-- PHP Validation Here -->
+                    <!-- JavaScript Validation -->
+                    <span class="err" id="err-zip">Please Enter a Zip Code</span>
+                </div>
+                <check if="{{ isset(@errors['zip']) }}">
+                    <span class="err">{{ @errors['zip'] }}</span>
+                </check>
+            </div>
             <!-- get email name -->
-            <div class="form-group col-md-6">
+            <div class="form-group mt-2">
                 <label for="email" class="fw-bold">Email</label>
                 <div class="col">
                     <input class="form-control" type="text" name="email" id="email" value="{{ @userEmail }}"
@@ -71,7 +116,6 @@
             <check if="{{ isset(@errors['email']) }}">
                 <span class="err">{{ @errors['email'] }}</span>
             </check>
-        </div>
         <!-- next btn -->
         <div class="text-center mt-3">
             <input type="submit" class="btn btn-warning text-light" value="Next">
