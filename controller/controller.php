@@ -159,9 +159,6 @@ class Controller
         $cartId = $GLOBALS['dataLayer']->saveCart($_SESSION['cart']);
         $this->_f3->set('cartId', $cartId);
 
-        $ordersId = $GLOBALS['dataLayer']->saveOrders($_SESSION['orders']);
-        $this->_f3->set('ordersId', $ordersId);
-
         //Display the second orders form
         $view = new Template();
         echo $view->render('views/summary.html');

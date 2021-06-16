@@ -28,6 +28,7 @@ class Orders
     function __construct($fname = "", $lname = "", $email = "", $address = "",
     $city="", $state="", $zipcode="")
     {
+
         $this->_fname = $fname;
         $this->_lname = $lname;
         $this->_email = $email;

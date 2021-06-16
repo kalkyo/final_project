@@ -6,7 +6,7 @@
  * @author Peter Eang & Jada Senebouttarath
  * @copyright 2021
  */
-class Cart
+class Cart extends Orders
 {
     private $_totalPrice;
     private $_shoes;
@@ -18,6 +18,7 @@ class Cart
      */
     public function __construct($_totalPrice=0, $_shoes="")
     {
+        parent::__construct();
         $this->_totalPrice = $_totalPrice;
         $this->_shoes = $_shoes;
     }
