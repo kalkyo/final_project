@@ -20,8 +20,8 @@ $dataLayer = new DataLayer();
 
 //test case below
 //$dataLayer->saveCart(new Cart(1350.00, "aj1, af1"));
-$dataLayer->saveOrders(new Orders("Peter", "Eang", "peang@greenriver.edu",
-"12345st", "Auburn","Washington","98030"));
+/*$dataLayer->saveOrders(new Orders("Peter", "Eang", "peang@greenriver.edu",
+"12345st", "Auburn","Washington","98030"));*/
 
 // define default route
 $f3->route('GET|POST /', function () {
