@@ -14,7 +14,6 @@
                 <a class="nav-link h5" href="./">Home</a>
             </li>
         </ul>
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,19 +36,19 @@
     </div>
 </nav>
 
-<h1>Admin Page</h1>
+<h2>Admin Page: Invoiced Orders</h2>
 <div class="container">
-    <table style="width:100%" class="display" id="guest-table">
+    <table style="width:100%" class="display" id="tableOrders">
         <thead>
         <tr>
-            <th>User ID</th>
-            <th>Cart ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Address</th>
-            <th>Email</th>
-            <th>Brand</th>
-            <th>Model</th>
+            <th>{{@userId }}User ID</th>
+            <th>{{@cartId}}Cart ID</th>
+            <th>{{@order}}First Name</th>
+            <th>{{@order}}Last Name</th>
+            <th>{{@order}}Address</th>
+            <th>{{@order}}Email</th>
+            <th>{{@order}}Brand</th>
+            <th>{{@order}}Model</th>
             <th>Date</th>
             <th>Total Price</th>
         </tr>
@@ -59,6 +58,12 @@
     </table>
 </div>
 
+<!-- jQuery -->
+<script src="cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"></script>
+<script src="cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script>
+    $('#tableOrders').DataTable();
+</script>
 <!-- footer-->
 <include href="includes/footer.html"></include>
 </body>

@@ -1,11 +1,13 @@
 # StreetWear Storm
 A website allowing users to browse a catalog of shoes ranging in a variety of brands under the sneakers categories.
 A user is presented with the home page showcasing the newest shoes added currently with graphics making the shoes pop.
-Upon navigating through the page users can pick out shoes and add them to the cart. Users can view the cart and
-then proceed to checkout filling out user information.
+Upon navigating through the page, users can pick out shoes and add them to the cart. Users can view the cart and
+then proceed to checkout by filling out their shipping information.
 The admin can log in and track orders that have been placed.
 
-* Admin Page login is admin and the password is @adminPassword1
+# Admin Page login
+* Username is admin
+* Password is @adminPassword1
 
 ## Authors
 * Peter Eang
@@ -23,8 +25,7 @@ The admin can log in and track orders that have been placed.
 * All routes are in the index.php and leverages templating language using the Fat-Free Framework
 
 ### 3. Has a clearly defined database layer using PDO and prepared statements. You should have at least two related tables.
-* Database layer is under model as data-layer.php. Cart and Shoe are the related tables (one to many relationship). A
-  cart can have many shoes.
+* Database layer is under model as data-layer.php. Cart and Orders are the related tables (one to one relationship).
 
 ### 4. Data can be viewed and added
 * Database layer uses PDO and prepared statements to add, retrieve, and delete from the database.
@@ -33,8 +34,8 @@ The admin can log in and track orders that have been placed.
 * Each teammate has a history of commits and commits are clearly commented.
 
 ### 6. Uses OOP, and defines multiple classes, including at least one inheritance relationship.
-* Three classes. Order, Cart, and Shoe class. Order contains first and last name, email, and address. Shoe contains
-  the model, brand, and price. The Cart extends the Shoe class and has the total price.
+* Two classes. Order and Cart class. Order contains first and last name, email, address, city, state, and zipcode. 
+  Cart contains the shoes and total price. The Orders extends the Cart class.
 
 ### 7. Contains full Docblocks for all PHP files and follows PEAR standards.
 * All PHP files contains Docblocks and follows PEAR standards.
@@ -54,7 +55,7 @@ The admin can log in and track orders that have been placed.
 * We did not incorporate Ajax
 
 # UML Class Diagram
-![UML Diagram](images/UML.png)
+![UML Diagram](images/newUML.png)
 
 # ER Database Diagram
-![ERD.png](images/erd.png)
+![ERD.png](images/newERD.png)
